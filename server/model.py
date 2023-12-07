@@ -3,4 +3,5 @@ from sqlalchemy.ext.associationproxy import association_proxy
 
 from config import db
 
-# Models go here!
+# Models don't go here, put in individual files in the /models folder!
+
