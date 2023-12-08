@@ -15,6 +15,7 @@ from models.users import User
 from resources.login import Login
 from resources.checkSession import CheckSession
 from resources.signup import Signup
+from resources.logout import Logout
 
 # Views don't go here!
 
@@ -25,6 +26,7 @@ from resources.signup import Signup
 api.add_resource(Login, '/api/login', endpoint='login')
 api.add_resource(CheckSession, '/api/check_session')
 api.add_resource(Signup, '/api/signup')
+api.add_resource(Logout, '/api/logout')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
