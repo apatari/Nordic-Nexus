@@ -3,6 +3,9 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
+
+const lib = ['places']
 
 function SignupForm({ signupMode, setSignupMode, onLogin }) {
 
@@ -13,21 +16,24 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
         setSignupMode(!signupMode)
     }
 
+    const {isLoaded} = useJsApiLoader({
+        googleMapsApiKey: 'AIzaSyAMCcLG-a9KO5AZD-zTwHI8IoO6jw_I_RI',
+        libraries: lib,
+      })
+
 // note: I included address in here for now, we'll remove it and update the onSubmit function once 
 //  address validation is ready to be added
     const formSchema = yup.object().shape({
         username: yup.string().required("Please enter a username").max(20, "Username must be 20 characters or fewer"),
         password: yup.string().required("Please enter a password").min(4, "Passwords need to be 4 characters or more"),
-        confirmPassword: yup.string().required("Please confirm password"),
-        address: yup.string().required("Please enter an address")
+        confirmPassword: yup.string().required("Please confirm password")
     })
 
     const formik = useFormik({
         initialValues: {
             username: "",
             password: "",
-            confirmPassword: "",
-            address: ""
+            confirmPassword: ""
         },
         validationSchema: formSchema,
         validateOnChange: false,
@@ -55,6 +61,10 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
             }
         }
     })
+
+    if (!isLoaded) {
+        return <h2 className='m-3' >loading</h2>
+      }
 
     return (
         <div>
@@ -102,18 +112,20 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     <Form.Label>Confirm Password</Form.Label>
                     {formik.errors.confirmPassword ? <div className="text-danger" >{formik.errors.confirmPassword}</div> : ""}
                 </Form.Group>
-
+                
+                
+                <Autocomplete>
                 <Form.Group className="form-floating ms-3 " >
                     <Form.Control 
                         type="text" 
                         id="address" 
                         name="address" 
                         placeholder="address"  
-                        value={formik.values.address}
-                        onChange={formik.handleChange}/>
+                        />
                     <Form.Label >Address</Form.Label>
                     {formik.errors.address ? <div className="text-danger" >{formik.errors.address}</div> : ""}
                 </Form.Group>
+                </Autocomplete>
 
                 <Form.Label className="ms-3 text-info" >We'll use this address to provide directions to your favorite Nordic centers.  
                     Providing a city and state without a street address works fine, too.</Form.Label>
