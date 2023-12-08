@@ -64,6 +64,7 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
                             onChange={formik.handleChange}  
                         />
                         <Form.Label >Username</Form.Label>
+                        {formik.errors.username ? <div className="text-danger" >{formik.errors.username}</div> : ""}
                     </Form.Group>
                 
                     <Form.Group className="m-3 form-floating" >
@@ -77,13 +78,14 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
                             onChange={formik.handleChange} 
                         />
                         <Form.Label>Password</Form.Label>
+                        {formik.errors.password ? <div className="text-danger" >{formik.errors.password}</div> : ""}
                     </Form.Group>
                     {errors.map((err) => (
                         <p className="text-danger m-3" key={err}>{err}</p>
                     ))}
 
-                    <p className="text-danger m-3"> {formik.errors.username}</p>
-                    <p className="text-danger m-3"> {formik.errors.password}</p>
+                    {/* <p className="text-danger m-3"> {formik.errors.username}</p>
+                    <p className="text-danger m-3"> {formik.errors.password}</p> */}
 
                     <Button className="m-3" variant="primary" type="submit">
                         Log In

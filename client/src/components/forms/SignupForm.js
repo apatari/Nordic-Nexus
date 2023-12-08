@@ -30,8 +30,8 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
             address: ""
         },
         validationSchema: formSchema,
-        // validateOnChange: false,
-        // validateOnBlur: false,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             setErrors([])
             if (formik.values.password === formik.values.confirmPassword){
@@ -70,6 +70,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         onChange={formik.handleChange}/>
 
                     <Form.Label>Username</Form.Label>
+                    {formik.errors.username ? <div className="text-danger" >{formik.errors.username}</div> : ""}
                 </Form.Group>
 
                 <Form.Group className="form-floating" >
@@ -82,6 +83,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         onChange={formik.handleChange}/>
 
                     <Form.Label>Password</Form.Label>
+                    {formik.errors.password ? <div className="text-danger" >{formik.errors.password}</div> : ""}
                 </Form.Group>
 
                 <Form.Group className="form-floating" >
@@ -94,6 +96,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         onChange={formik.handleChange}/>
 
                     <Form.Label>Confirm Password</Form.Label>
+                    {formik.errors.confirmPassword ? <div className="text-danger" >{formik.errors.confirmPassword}</div> : ""}
                 </Form.Group>
 
                 <Form.Group className="form-floating" >
@@ -105,6 +108,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         value={formik.values.address}
                         onChange={formik.handleChange}/>
                     <Form.Label >Address</Form.Label>
+                    {formik.errors.address ? <div className="text-danger" >{formik.errors.address}</div> : ""}
                 </Form.Group>
 
                 <Form.Label>Note - We'll use this address to provide directions to your favorite Nordic centers.  
