@@ -31,19 +31,17 @@ function Header({ user, setUser }) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto fs-5 ">
-                    <NavLink 
+                    <Nav.Link 
                         exact to="/" 
-                        className=" text-white mt-2 px-4" 
-                        style={linkStyles} 
-                        activeStyle={{textDecoration: textDec}} 
-                    >Home</NavLink>
+                        className="px-4" 
+                        as={NavLink} 
+                    >Home</Nav.Link>
 
-                    <NavLink 
+                    <Nav.Link 
                         exact to="/nordiccenters" 
-                        className=" text-white mt-2 px-4"
-                        style={linkStyles} 
-                        activeStyle={{textDecoration: textDec}} 
-                    >Nordic Centers</NavLink>
+                        className="px-4" 
+                        as={NavLink} 
+                    >Nordic Centers</Nav.Link>
 
                     <NavDropdown title="New" id="basic-nav-dropdown" className="px-4">
                     <NavDropdown.Item href="#action/3.1">Trip</NavDropdown.Item>
