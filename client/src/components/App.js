@@ -5,6 +5,7 @@ import "bootswatch/dist/flatly/bootstrap.min.css";
 import Home from "./Home";
 import Header from "./Header";
 import Login from "./Login";
+import NordicCenters from "./NordicCenters";
 
 function App() {
   
@@ -29,11 +30,14 @@ function App() {
 
   return (
     <div>
-      <Header user={user} serUser={setUser} ></Header>
+      <Header user={user} setUser={setUser} ></Header>
 
     <Switch>
       <Route exact path="/">
         <Home user={user} />
+      </Route>
+      <Route exact path="/nordiccenters">
+        <NordicCenters />
       </Route>
     </Switch>
     </div>

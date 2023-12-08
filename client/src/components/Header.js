@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap'
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function Header({ user, setUser }) {
 
@@ -12,6 +13,15 @@ function Header({ user, setUser }) {
         console.log(user)
       }
 
+    const linkStyles = {
+        textDecoration: 'none',
+        color:'white'
+    }
+    let textDec = 'none'
+    if (user) {
+        textDec = 'underline'
+    }
+
 
     return (
         <div>
@@ -21,8 +31,20 @@ function Header({ user, setUser }) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto fs-5 ">
-                    <Nav.Link href="#home" className="px-4" >Home</Nav.Link>
-                    <Nav.Link href="#link" className="px-4">Nordic Centers</Nav.Link>
+                    <NavLink 
+                        exact to="/" 
+                        className=" text-white mt-2 px-4" 
+                        style={linkStyles} 
+                        activeStyle={{textDecoration: textDec}} 
+                    >Home</NavLink>
+
+                    <NavLink 
+                        exact to="/nordiccenters" 
+                        className=" text-white mt-2 px-4"
+                        style={linkStyles} 
+                        activeStyle={{textDecoration: textDec}} 
+                    >Nordic Centers</NavLink>
+
                     <NavDropdown title="New" id="basic-nav-dropdown" className="px-4">
                     <NavDropdown.Item href="#action/3.1">Trip</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">
@@ -31,7 +53,7 @@ function Header({ user, setUser }) {
                     
                     </NavDropdown>
                 </Nav>
-                {Boolean(user)? <Button className="m-5" onClick={handleLogoutClick}>Logout</Button> : ""}
+                {Boolean(user)? <Button onClick={handleLogoutClick}>Logout</Button> : ""}
                 </Navbar.Collapse>
             </Container>
             </Navbar>

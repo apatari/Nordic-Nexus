@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginForm from "./forms/LoginForm";
 import SignupForm from "./forms/SignupForm";
 
-function Login() {
+function Login({ onLogin }) {
+
+    const [signupMode, setSignupMode] = useState(false)
+
     return (
-        <div className="m-4" >
-            <h2>login placeholder</h2>
-        </div>
+        signupMode? 
+            <SignupForm signupMode={signupMode} setSignupMode={setSignupMode} onLogin={onLogin} /> : 
+            <LoginForm 
+                onLogin={onLogin} 
+                setSignupMode={setSignupMode} 
+                signupMode={signupMode} 
+            />
     )
 }
 
