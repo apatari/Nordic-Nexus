@@ -59,8 +59,12 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
     return (
         <div>
             <Button className="m-3 btn-dark"  onClick={handleReturnClick}>return to login</Button>
+            <Col lg="5" className="mx-auto">
+            <h3 className="m-3 text-info ">
+                    Create a new Nordic Nexus account
+                </h3>
             <Form onSubmit={formik.handleSubmit} >
-                <Form.Group className="form-floating" >
+                <Form.Group className="form-floating w-50 m-3 " >
                     <Form.Control 
                         type="text" 
                         id="username" 
@@ -73,7 +77,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     {formik.errors.username ? <div className="text-danger" >{formik.errors.username}</div> : ""}
                 </Form.Group>
 
-                <Form.Group className="form-floating" >
+                <Form.Group className="form-floating w-50  m-3 " >
                     <Form.Control 
                         type="password" 
                         id="password" 
@@ -86,7 +90,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     {formik.errors.password ? <div className="text-danger" >{formik.errors.password}</div> : ""}
                 </Form.Group>
 
-                <Form.Group className="form-floating" >
+                <Form.Group className="form-floating w-50 m-3 " >
                     <Form.Control 
                         type="password" 
                         id="confirmPassword" 
@@ -99,7 +103,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     {formik.errors.confirmPassword ? <div className="text-danger" >{formik.errors.confirmPassword}</div> : ""}
                 </Form.Group>
 
-                <Form.Group className="form-floating" >
+                <Form.Group className="form-floating ms-3 " >
                     <Form.Control 
                         type="text" 
                         id="address" 
@@ -111,7 +115,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     {formik.errors.address ? <div className="text-danger" >{formik.errors.address}</div> : ""}
                 </Form.Group>
 
-                <Form.Label>Note - We'll use this address to provide directions to your favorite Nordic centers.  
+                <Form.Label className="ms-3 text-info" >We'll use this address to provide directions to your favorite Nordic centers.  
                     Providing a city and state without a street address works fine, too.</Form.Label>
                 
                 <div className="d-flex" >
@@ -121,7 +125,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     <Button className="ms-auto btn-info " type="submit" >Sign up</Button>
                 </div>
             </Form>
-            
+            </Col>
         </div>
     )
 }
