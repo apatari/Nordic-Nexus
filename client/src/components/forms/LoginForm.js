@@ -53,20 +53,21 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
                     Please log in to view page
                 </h3>    
                 <Form className="m-4" onSubmit={formik.handleSubmit} >
-                    <Form.Group className="m-3" >
-                        <Form.Label>Username</Form.Label>
+                    <Form.Group className="m-3 form-floating" >
+                        
                         <Form.Control 
                             type="username" 
                             name="username" 
                             id="username" 
-                            placeholder="Enter username"
+                            placeholder="Username"
                             value={formik.values.username}
                             onChange={formik.handleChange}  
                         />
+                        <Form.Label >Username</Form.Label>
                     </Form.Group>
                 
-                    <Form.Group className="m-3" >
-                        <Form.Label>Password</Form.Label>
+                    <Form.Group className="m-3 form-floating" >
+                        
                         <Form.Control 
                             type="password" 
                             name="password" 
@@ -75,6 +76,7 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
                             value={formik.values.password}
                             onChange={formik.handleChange} 
                         />
+                        <Form.Label>Password</Form.Label>
                     </Form.Group>
                     {errors.map((err) => (
                         <p className="text-danger m-3" key={err}>{err}</p>
