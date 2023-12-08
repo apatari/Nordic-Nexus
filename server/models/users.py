@@ -11,7 +11,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
     _password_hash = db.Column(db.String)
-    address = db.Column(db.String)
+    address = db.Column(db.String, nullable=False)
 
     @validates('username')
     def validate_username(self, key, name):
@@ -20,6 +20,13 @@ class User(db.Model, SerializerMixin):
         if name in [user.username for user in User.query.all()]:
             raise ValueError("Sorry, that username is not available")
         return name
+    
+    @validates('address')
+    def validate_address(self, key, address):
+        if not address or len(address) < 1:
+            raise ValueError("Must provide an address")
+        return address
+
     
     @hybrid_property
     def password_hash(self):
