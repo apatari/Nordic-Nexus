@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -12,6 +12,8 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
     const [errors, setErrors] = useState([])
     const history = useHistory()
 
+    const addressRef = useRef()
+
     const handleReturnClick = () => {
         setSignupMode(!signupMode)
     }
@@ -20,6 +22,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
         googleMapsApiKey: 'AIzaSyAMCcLG-a9KO5AZD-zTwHI8IoO6jw_I_RI',
         libraries: lib,
       })
+
 
 // note: I included address in here for now, we'll remove it and update the onSubmit function once 
 //  address validation is ready to be added
@@ -47,7 +50,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(values),
+                    body: JSON.stringify({...values, "address": addressRef.current.value}),
                 }).then(r => {
                     if (r.ok) {
                         r.json().then(user =>onLogin(user)) 
@@ -120,7 +123,8 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         type="text" 
                         id="address" 
                         name="address" 
-                        placeholder="address"  
+                        placeholder="address"
+                        ref={addressRef}  
                         />
                     <Form.Label >Address</Form.Label>
                     {formik.errors.address ? <div className="text-danger" >{formik.errors.address}</div> : ""}
@@ -135,6 +139,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                             <p className="text-danger m-3" key={err}>{err}</p>
                         ))}
                     <Button className="ms-auto btn-info " type="submit" >Sign up</Button>
+                    
                 </div>
             </Form>
             </Col>
