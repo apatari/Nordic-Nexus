@@ -27,7 +27,7 @@ function Header({ user, setUser }) {
         <div>
             <Navbar expand="md" className="bg-primary"data-bs-theme="dark" >
             <Container>
-                <Navbar.Brand href="#home" className="pe-4 fs-3">Nordic Nexus</Navbar.Brand>
+                <Navbar.Brand as={NavLink}  exact to='/' className="pe-4 fs-3">Nordic Nexus</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto fs-5 ">
@@ -44,8 +44,8 @@ function Header({ user, setUser }) {
                     >Nordic Centers</Nav.Link>
 
                     <NavDropdown title="New" id="basic-nav-dropdown" className="px-4">
-                    <NavDropdown.Item href="#action/3.1">Trip</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item as={NavLink} exact to="/trips/new" >Trip</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} exact to="/nordiccenters/new">
                         Nordic Center
                     </NavDropdown.Item>
                     
