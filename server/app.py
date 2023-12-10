@@ -10,12 +10,15 @@ from flask_restful import Resource
 from config import app, db, api
 # Add your model imports
 from models.users import User
+from models.nordicCenters import NordicCenter
 
 # Resource imports
 from resources.login import Login
 from resources.checkSession import CheckSession
 from resources.signup import Signup
 from resources.logout import Logout
+from resources.nordicCenterIndex import NordicCenterIndex
+from resources.nordicCenterByID import NordicCenterByID
 
 # Views don't go here!
 
@@ -27,6 +30,8 @@ api.add_resource(Login, '/api/login', endpoint='login')
 api.add_resource(CheckSession, '/api/check_session')
 api.add_resource(Signup, '/api/signup')
 api.add_resource(Logout, '/api/logout')
+api.add_resource(NordicCenterIndex, '/api/nordiccenters')
+api.add_resource(NordicCenterByID, '/api/nordiccenters/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

@@ -18,10 +18,7 @@ class Login(Resource):
 
         if user and user.authenticate(password):
             session['user_id'] = user.id
-            response_body = {
-                "id": user.id,
-                "username": user.username,
-            }
+            response_body = user.to_dict(rules=('-_password_hash',))
             return response_body, 200
         else:
             return {"errors": ["Invalid username and/or password"]}, 401

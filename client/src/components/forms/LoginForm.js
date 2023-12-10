@@ -36,7 +36,9 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
                 body: JSON.stringify(values),
             }).then(r => {
                 if (r.ok) {
-                    r.json().then(user =>onLogin(user)) 
+                    r.json().then(user =>{onLogin(user) 
+                        console.log(user)})
+                     
                     history.push('/')    
                 } else {
                     r.json().then(err => setErrors(err.errors))
