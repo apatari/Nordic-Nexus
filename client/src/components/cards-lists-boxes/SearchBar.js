@@ -11,7 +11,7 @@ function SearchBar() {
                     </Col>
                     <Col sm={2} className="m-2" ><Button>Search</Button></Col>
                     <Col sm={2} className="m-2 me-5" >
-                        <Form.Select aria-label="Default select example" className="bg-secondary bg-opacity-75">
+                        <Form.Select aria-label="Default select example" className="bg-light bg-opacity-75">
                             <option>Sort Results:</option>
                             <option value="1">By name</option>
                             <option value="2">By average rating</option>
