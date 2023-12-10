@@ -9,8 +9,8 @@ function NordicCenterCard() {
             <Card className="m-4" > 
                 <Card.Header className="fs-4" >Center Name</Card.Header>
                 <Card.Body >
-                    <Card.Text className="fs-4" >Ratings:</Card.Text> 
-                    <ProgressBar className="mb-3" >
+                    <Card.Text className="fs-5" >Average rating:</Card.Text> 
+                    <ProgressBar className="mb-4" >
                         <ProgressBar className="fs-5" striped variant="success" label={35} now={35} key={1} />
                         <ProgressBar striped variant="warning" now={20} key={2} />
                         <ProgressBar striped variant="info" now={10} key={3} />
