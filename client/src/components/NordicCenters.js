@@ -3,6 +3,7 @@ import SearchBar from "./cards-lists-boxes/SearchBar";
 import { Row, Col } from "react-bootstrap";
 import NordicCenterList from "./cards-lists-boxes/NordicCenterList";
 import TripList from "./cards-lists-boxes/TripList";
+import MyCard from "./cards-lists-boxes/MyCard";
 
 function NordicCenters () {
 
@@ -17,6 +18,7 @@ function NordicCenters () {
                 </Col>
                 <Col>
                     <TripList />
+                    <MyCard />
                 </Col>
             </Row>
             

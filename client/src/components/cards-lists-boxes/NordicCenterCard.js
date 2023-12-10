@@ -10,9 +10,9 @@ function NordicCenterCard() {
                 <Card.Header className="fs-4" >Center Name</Card.Header>
                 <Card.Body >
                     <Card.Text className="fs-5" >Average rating:</Card.Text> 
-                    <ProgressBar className="mb-4" >
-                        <ProgressBar className="fs-5" striped variant="success" label={35} now={35} key={1} />
-                        <ProgressBar striped variant="warning" now={20} key={2} />
+                    <ProgressBar className="mb-4 fs-5" >
+                        <ProgressBar className="" striped variant="success" label={4.5} now={35} key={1} />
+                        <ProgressBar striped variant="warning" label={3.4}  now={20} key={2} />
                         <ProgressBar striped variant="info" now={10} key={3} />
                     </ProgressBar>
                     <Card.Title> <strong>Today's Weather: </strong> Sunny and cold</Card.Title>
