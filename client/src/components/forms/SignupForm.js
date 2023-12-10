@@ -19,8 +19,8 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
     }
 
     const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyAMCcLG-a9KO5AZD-zTwHI8IoO6jw_I_RI',
-        libraries: lib,
+        libraries: lib
+        // add api key from environment
       })
 
 
