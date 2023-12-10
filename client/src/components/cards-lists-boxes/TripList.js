@@ -5,7 +5,7 @@ import TripCardPlaceholder from "./TripCardPlaceholder";
 
 function TripList() {
     return (
-        <div className="m-2" >
+        <div className="me-2" >
             <h4 className="m-3" >Latest Trips</h4>
             
             <TripCardPlaceholder />

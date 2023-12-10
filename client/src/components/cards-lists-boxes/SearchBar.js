@@ -3,10 +3,10 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 
 function SearchBar() {
     return (
-        <div className="bg-success m-2 rounded" >
+        <div className="bg-success m-1 rounded" >
             <Form>
                 <Row>
-                    <Col className="m-2 ms-5" >
+                    <Col className="m-2 ms-5 " >
                         <Form.Control placeholder="Search Nordic Centers" />
                     </Col>
                     <Col sm={2} className="m-2" ><Button>Search</Button></Col>
