@@ -19,8 +19,8 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
     }
 
     const {isLoaded} = useJsApiLoader({
-        libraries: lib
-        // add api key from environment
+        libraries: lib,
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY
       })
 
 
