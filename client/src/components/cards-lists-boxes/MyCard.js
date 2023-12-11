@@ -3,8 +3,8 @@ import { Card, Row, Col } from "react-bootstrap";
 
 function MyCard() {
     return (
-        <div className="me-3 m-2" >
-            <Card className="p-2 fs-6 bg-info bg-opacity-25" >
+        <div className="" >
+            <Card style={{width: '16rem'}}  className="fs-6 bg-info bg-opacity-25 my-3 p-2" >
                 <Card.Text>Web development by:</Card.Text>
                 <Card.Text><strong>Andy Patari</strong></Card.Text>
                 <Row>

@@ -4,7 +4,7 @@ import { Row } from "react-bootstrap";
 
 function WeatherBox({ weather }) {
     return (
-        <div className="m-3 p-3 ps-4 rounded" >
+        <div className="p-3 ps-4 rounded" >
             <Row className="fs-4" >
                 Weather Report:
             </Row>

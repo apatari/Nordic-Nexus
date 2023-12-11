@@ -4,7 +4,7 @@ import { Row, Col, Button } from "react-bootstrap";
 function NordicCenterInfo() {
     return (
         
-        <div className="bg-primary bg-opacity-25 rounded m-3 p-3 fs-5" >
+        <div className="bg-primary bg-opacity-25 rounded p-3 fs-5" >
         <Row>
             <h4>Grafton Ponds</h4>
         </Row>

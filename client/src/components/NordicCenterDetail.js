@@ -4,7 +4,7 @@ import WeatherBox from "./cards-lists-boxes/WeatherBox";
 import TripList from "./cards-lists-boxes/TripList";
 import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
 import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 
 
@@ -30,6 +30,7 @@ function NordicCenterDetail() {
 
     return (
         <div>
+            <Container>
             Nordic Detail {nordic_center_id}
 
             <Row>
@@ -43,12 +44,12 @@ function NordicCenterDetail() {
                 </Col>
                 
             </Row>
-            <Row className="m-3">
+            <Row className="">
                 <TripList />
             </Row>
 
 
-
+            </Container>
             
         </div>
     )

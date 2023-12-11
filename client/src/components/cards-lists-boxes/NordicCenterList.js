@@ -1,19 +1,35 @@
 import React from "react";
 import { Card, ProgressBar } from "react-bootstrap";
 import NordicCenterCard from "./NordicCenterCard";
+import NordicCenterCardPlaceholder from "./NordicCenterCardPlaceholder";
 
 
-function NordicCenterList() {
-    return (
-        <div className="m-2" >
-            <h3 className="m-3" >Nordic Centers</h3>
+function NordicCenterList({ nordicCenters }) {
+    if (nordicCenters) {
+        return (
+            <div className="m-2" >
+                <h3 className="m-3" >Nordic Centers</h3>
+                
+                <NordicCenterCard />
+                <NordicCenterCard />
+                <NordicCenterCard />
             
-            <NordicCenterCard />
-            <NordicCenterCard />
-            <NordicCenterCard />
-        
-        </div>
-    )
+            </div>
+        )
+    } else {
+        return (
+            <div className="m-2" >
+                <h3 className="m-3" >Nordic Centers</h3>
+                
+                <NordicCenterCardPlaceholder />
+                <NordicCenterCardPlaceholder />
+                <NordicCenterCardPlaceholder />
+                
+            
+            </div>
+        )
+    }
+    
 }
 
 export default NordicCenterList
