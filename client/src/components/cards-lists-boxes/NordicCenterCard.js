@@ -15,7 +15,7 @@ function NordicCenterCard() {
                         <ProgressBar striped variant="warning" label={3.4}  now={20} key={2} />
                         <ProgressBar striped variant="info" now={10} key={3} />
                     </ProgressBar>
-                    <Card.Title> <strong>Today's Weather: </strong> Sunny and cold</Card.Title>
+                    <Card.Title> <strong>Address: </strong> 123 Main Street, Putney, VT</Card.Title>
                     <a href='http://www.google.com' >Trail Report</a>
                 </Card.Body>
 

@@ -8,6 +8,7 @@ import Login from "./Login";
 import NordicCenters from "./NordicCenters";
 import TripForm from "./forms/TripForm";
 import NordicCenterForm from "./forms/NordicCenterForm";
+import NordicCenterDetail from "./NordicCenterDetail";
 
 export const UserContext = createContext(null)
 
@@ -50,6 +51,9 @@ function App() {
         </Route>
         <Route exact path="/nordiccenters/new">
           <NordicCenterForm />
+        </Route>
+        <Route exact path="/nordiccenters/:nordic_center_id" >
+          <NordicCenterDetail />
         </Route>
       </Switch>
     </UserContext.Provider>

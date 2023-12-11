@@ -3,7 +3,7 @@ import { Card, Placeholder } from "react-bootstrap";
 
 function TripCardPlaceholder() {
     return (
-        <Card className="me-2 my-3" >
+        <Card style={{width: '16rem'}}  className=" mx-2 my-3" >
             <Card.Body>
                 <Placeholder as={Card.Title} animation="glow">
                     <Placeholder xs={6} />

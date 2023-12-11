@@ -1,10 +1,18 @@
 import React, { useState, useEffect }  from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import WeatherBox from "./cards-lists-boxes/WeatherBox";
+import TripList from "./cards-lists-boxes/TripList";
+import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
+import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
+import { Row, Col } from "react-bootstrap";
 
 
 
 function NordicCenterDetail() {
 
     const [weather, setWeather] = useState(null)
+
+    const { nordic_center_id } = useParams()
 
     const fetchLink = `http://api.openweathermap.org/data/3.0/onecall?` + 
     `lat=42.85&lon=-72.56&units=imperial&exclude=minutely,hourly` + 
@@ -22,16 +30,26 @@ function NordicCenterDetail() {
 
     return (
         <div>
-            Nordic Detail
-            <h4>Weather report:</h4>
-            <div className="m-3" >
-                {weather? 
-                weather.daily.map(day=> {
-                    return <p key={day.dt} > 
-                        <strong>{Math.round(day.temp.max)} / {Math.round(day.temp.min)} : </strong> 
-                        Short: {day.weather[0].description} Long: {day.summary} </p>
-                }) : "Loading..."}
-            </div>
+            Nordic Detail {nordic_center_id}
+
+            <Row>
+                <Col> <NordicCenterInfo/> </Col>
+                <Col> <NordicCenterMap /> </Col>
+
+            </Row>
+            <Row>
+                <Col>
+                    <WeatherBox weather={weather} />
+                </Col>
+                
+            </Row>
+            <Row className="m-3">
+                <TripList />
+            </Row>
+
+
+
+            
         </div>
     )
 }
