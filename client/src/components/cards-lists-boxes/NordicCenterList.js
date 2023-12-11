@@ -10,9 +10,9 @@ function NordicCenterList({ nordicCenters }) {
             <div className="m-2" >
                 <h3 className="m-3" >Nordic Centers</h3>
                 
-                <NordicCenterCard />
-                <NordicCenterCard />
-                <NordicCenterCard />
+                {nordicCenters.map(nordicCenter => {
+                    return <NordicCenterCard key={nordicCenter.id} nordicCenter={nordicCenter} />
+                })}
             
             </div>
         )

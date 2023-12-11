@@ -1,20 +1,23 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
 
-function NordicCenterInfo() {
-    return (
+function NordicCenterInfo({ nordicCenter }) {
+
+    if (!nordicCenter) {<h3 className="m-4" >Loading...</h3>}
+
+    else { return (
         
         <div className="bg-primary bg-opacity-25 rounded p-3 fs-5" >
         <Row>
-            <h4>Grafton Ponds</h4>
+            <h4>{nordicCenter.name}</h4>
         </Row>
         <Row>
-            <p>123 Putney Road, Grafton, VT</p>
+            <p>{nordicCenter.address}</p>
         </Row>
 
         <Row className="mb-2" >
-            <a href="http://www.google.com">Trail Report</a>
-            <a href="http://www.google.com">Trail Map</a>
+            {nordicCenter.report_url? <a href={nordicCenter.report_url} >Trail Report</a>: ""}
+            {nordicCenter.map_url? <a href={nordicCenter.map_url} >Trail Map</a>: ""}
         </Row>
         <Row>
             <Col>
@@ -25,7 +28,7 @@ function NordicCenterInfo() {
             </Col>
         </Row>
     </div>
-    )
+    ) }
 }
 
 export default NordicCenterInfo

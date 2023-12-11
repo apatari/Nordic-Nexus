@@ -1,13 +1,20 @@
 import React from "react";
 import { Card, ProgressBar } from "react-bootstrap";
+import { Link } from 'react-router-dom'
 
 
-function NordicCenterCard() {
+function NordicCenterCard({ nordicCenter }) {
     return (
         <div>
 
             <Card className="m-4" > 
-                <Card.Header className="fs-4" >Center Name</Card.Header>
+                <Card.Header 
+                    as={Link} 
+                    to={`/nordiccenters/${nordicCenter.id}`} 
+                    style={{textDecoration: 'none'}} 
+                    className="fs-4 text-info " >
+                        {nordicCenter.name}
+                </Card.Header>
                 <Card.Body >
                     <Card.Text className="fs-5" >Average rating:</Card.Text> 
                     <ProgressBar className="mb-4 fs-5" >
@@ -15,8 +22,8 @@ function NordicCenterCard() {
                         <ProgressBar striped variant="warning" label={3.4}  now={20} key={2} />
                         <ProgressBar striped variant="info" now={10} key={3} />
                     </ProgressBar>
-                    <Card.Title> <strong>Address: </strong> 123 Main Street, Putney, VT</Card.Title>
-                    <a href='http://www.google.com' >Trail Report</a>
+                    <Card.Title> <strong>Address: </strong> {nordicCenter.address}</Card.Title>
+                    {nordicCenter.report_url? <a href={nordicCenter.report_url} >Trail Report</a>: ""}
                 </Card.Body>
 
             </Card>

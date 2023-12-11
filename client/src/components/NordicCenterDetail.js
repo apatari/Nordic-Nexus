@@ -11,31 +11,37 @@ import { Row, Col, Container } from "react-bootstrap";
 function NordicCenterDetail() {
 
     const [weather, setWeather] = useState(null)
+    const [nordicCenter, setNordicCenter] =  useState(null)
 
     const { nordic_center_id } = useParams()
 
-    const fetchLink = `http://api.openweathermap.org/data/3.0/onecall?` + 
-    `lat=42.85&lon=-72.56&units=imperial&exclude=minutely,hourly` + 
-    `&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-
-
     useEffect(() => {
-        fetch(fetchLink)
+        fetch(`/api/nordiccenters/${nordic_center_id}`)
         .then(res => res.json())
-        .then(data => 
-            {setWeather(data)
-            console.log(data)})
-       
-    }, [])
+        .then(data => {
+            setNordicCenter(data)
+            const weatherFetchLink = `http://api.openweathermap.org/data/3.0/onecall?` + 
+                `lat=${data.latitude}&lon=${data.longitude}&units=imperial&exclude=minutely,hourly` + 
+                `&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+            fetch(weatherFetchLink)
+            .then(res => res.json())
+            .then(data => 
+                {setWeather(data)
+                console.log(data)})
+        
+        })
+            
+        }
+    , [])
+
 
     return (
         <div>
             <Container>
-            Nordic Detail {nordic_center_id}
-
-            <Row>
-                <Col> <NordicCenterInfo/> </Col>
-                <Col> <NordicCenterMap /> </Col>
+        
+            <Row className="mt-3" >
+                <Col> <NordicCenterInfo nordicCenter={nordicCenter} /> </Col>
+                <Col> <NordicCenterMap nordicCenter={nordicCenter}  /> </Col>
 
             </Row>
             <Row>
