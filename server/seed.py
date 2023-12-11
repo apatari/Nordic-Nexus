@@ -31,7 +31,13 @@ if __name__ == '__main__':
 
         db.session.commit()
 
-        nc1 = NordicCenter(name="Grafton Ponds", address="Grafton, VT", latitude=43.16176, longitude=-72.61525)
+        nc1 = NordicCenter(
+            name="Wild Wings", 
+            address="Peru, VT", 
+            latitude=43.26272, 
+            longitude=-72.90498, 
+            report_url='https://wildwingsski.com/category/trail-conditions/',
+            map_url='https://wildwingsski.com/trail-map/')
         nc2 = NordicCenter(name="BOC Trails", address="58 Senator Gannett Dr, Brattleboro, VT 05301", latitude=42.87315, longitude=-72.58144)
 
         db.session.add(nc1)
