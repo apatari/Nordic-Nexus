@@ -4,6 +4,7 @@
 from flask import request, session
 from flask_restful import Resource
 
+
 # Add your model imports
 from models.users import User
 

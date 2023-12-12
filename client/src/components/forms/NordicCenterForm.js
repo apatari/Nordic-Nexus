@@ -32,6 +32,8 @@ function NordicCenterForm() {
             map_url: "",
         },
         validationSchema: formSchema,
+        validateOnChange: false,
+        validateOnBlur: false,
         onSubmit: (values) => {
             console.log({...values, "address": addressRef.current.value})
         }
