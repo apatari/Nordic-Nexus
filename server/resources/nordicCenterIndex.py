@@ -33,6 +33,6 @@ class NordicCenterIndex(Resource):
             return new_nordic_center.to_dict(), 201
 
         except Exception as err:
-            return {"errors": str[(err)]}, 422
+            return {"errors": [str(err)]}, 422
 
     

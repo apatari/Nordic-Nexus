@@ -1,14 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as yup from "yup"
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const lib = ['places']
 
 function NordicCenterForm() {
 
     const addressRef = useRef()
+
+    const history = useHistory()
+
+    const [errors, setErrors] = useState([])
 
     const {isLoaded} = useJsApiLoader({
         libraries: lib,
@@ -36,6 +41,20 @@ function NordicCenterForm() {
         validateOnBlur: false,
         onSubmit: (values) => {
             console.log({...values, "address": addressRef.current.value})
+            fetch('/api/nordiccenters', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({...values, "address": addressRef.current.value}),
+            }).then(r => {
+                if (r.ok) {
+                     
+                    history.push('/nordiccenters')    
+                } else {
+                    r.json().then(err => setErrors((currentErrors) => [...currentErrors, err.errors]))
+                }
+            })
         }
     })
 
@@ -47,8 +66,8 @@ function NordicCenterForm() {
         <div className="ms-4" >
            
                 
-            <Col lg={6} className="m-5" >
-                <h3>New Nordic Center</h3>
+            <Col lg={6} className="m-5 p-3 bg-info bg-opacity-25 rounded-4" >
+                <h3 className="text-primary" >New Nordic Center</h3>
                 <Form onSubmit={formik.handleSubmit} >
                     
                     <Form.Group className="form-floating m-3"  >
@@ -142,6 +161,12 @@ function NordicCenterForm() {
                         <Form.Label>Trail Map URL (optional)</Form.Label>
                         {formik.errors.map_url ? <div className="text-danger" >{formik.errors.map_url}</div> : ""}
                     </Form.Group>
+                    <div className="d-flex" >
+                        {errors.map((err) => (
+                                <p className="text-danger m-3" key={err}>{err}</p>
+                            ))}
+                    </div>
+
                     <div className="d-flex" >
                         <Button type="submit" size='lg' className="ms-auto me-3 btn-success " >Submit</Button>
 
