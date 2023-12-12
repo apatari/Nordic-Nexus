@@ -18,6 +18,7 @@ class CheckSession(Resource):
             response_body = {
                 "id": user.id,
                 "username": user.username,
+                "address": user.address
             }
             return response_body, 200
         else:
