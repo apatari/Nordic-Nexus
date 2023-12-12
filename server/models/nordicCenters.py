@@ -1,6 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
+import validators
 
 from config import db
 
@@ -32,13 +33,24 @@ class NordicCenter(db.Model, SerializerMixin):
     @validates('latitude', 'longitude')
     def validate_coordinates(self, key, value):
         if not ((type(value) is float) or (type(value) is int)):
-            return ValueError("Coordinates must be a number")
+            raise ValueError("Coordinates must be a number")
         if not -180 < value < 180:
-            return ValueError("Coordinates must be between -180 and 180")
+            raise ValueError("Coordinates must be between -180 and 180")
         return value
 
     @validates('report_url', 'map_url')
     def validate_url(self, key, url):
-        if not type(url) is str:
-            return ValueError("Url must be a series of characters")
-        return url
+        if url == "":
+            return None
+
+        if validators.url(url):
+            return url
+        else:
+            raise ValueError(f"Invalid URL for {'Trail Report' if key == 'report_url' else 'Trail Map'}")
+    
+        # try:
+        #     validators.url(url)
+        #     return url
+        # except:
+        #     raise ValueError("Please enter a valid URL")
+        

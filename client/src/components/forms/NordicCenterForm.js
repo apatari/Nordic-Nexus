@@ -52,7 +52,7 @@ function NordicCenterForm() {
                      
                     history.push('/nordiccenters')    
                 } else {
-                    r.json().then(err => setErrors((currentErrors) => [...currentErrors, err.errors]))
+                    r.json().then(err => setErrors((currentErrors) => [err.errors]))
                 }
             })
         }

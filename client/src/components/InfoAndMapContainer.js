@@ -8,6 +8,8 @@ import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer} from '@react-goo
 
 import { UserContext } from "./App";
 
+const lib = ['places']
+
 function InfoAndMapContainer({ nordicCenter }) {
 
     const [directionsResponse, setDirectionsResponse] = useState(null)
@@ -18,6 +20,7 @@ function InfoAndMapContainer({ nordicCenter }) {
     const user = useContext(UserContext)
 
     const {isLoaded} = useJsApiLoader({
+        libraries: lib,
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY
       })
 
