@@ -5,6 +5,8 @@ import TripList from "./cards-lists-boxes/TripList";
 import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
 import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
 import { Row, Col, Container } from "react-bootstrap";
+import MapInfo from "./cards-lists-boxes/MapInfo";
+import InfoAndMapContainer from "./InfoAndMapContainer";
 
 
 
@@ -38,12 +40,8 @@ function NordicCenterDetail() {
     return (
         <div>
             <Container>
-        
-            <Row className="mt-3" >
-                <Col md={5} > <NordicCenterInfo nordicCenter={nordicCenter} /> </Col>
-                <Col> <NordicCenterMap nordicCenter={nordicCenter}  /> </Col>
-
-            </Row>
+            <InfoAndMapContainer nordicCenter={nordicCenter} />
+            
             <Row>
                 <Col>
                     <WeatherBox weather={weather} />

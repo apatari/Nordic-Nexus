@@ -1,20 +1,21 @@
 
+import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
+import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
+
+import MapInfo from "./cards-lists-boxes/MapInfo";
+
 import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Button, Placeholder, Card } from 'react-bootstrap';
 import { useJsApiLoader, GoogleMap, DirectionsRenderer} from '@react-google-maps/api' 
 
-import { UserContext } from "../App";
+import { UserContext } from "./App";
 
-
-function NordicCenterMap({ nordicCenter }) {
-
-    
+function InfoAndMapContainer({ nordicCenter }) {
 
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
-    // const [destination, setDestination] = useState('')
-    // const [origin, setOrigin] = useState('')
+    
 
     const user = useContext(UserContext)
 
@@ -40,8 +41,29 @@ function NordicCenterMap({ nordicCenter }) {
 
 
 
-      if (!isLoaded || !nordicCenter) {
-        return (
+    return(
+        <div>
+            <Row className="mt-3" >
+                <Col md={5} > 
+                    <Row>
+                        <NordicCenterInfo nordicCenter={nordicCenter} />
+                    </Row>  
+                    <Row>
+                        <div className=" mt-2 p-2 rounded h-100" >
+                            {(duration)? 
+                            <div>
+                                <h4>Duration: {duration}</h4>
+                                <h4>Distance: {distance}</h4>
+                            </div>
+                                 : ""}
+                            <Button onClick={calculateRoute} className="btn-info" >Show route on map &#8594; </Button>
+                        </div>
+                    </Row>
+                </Col>
+                <Col> 
+{/* start of insert */}
+                { (!isLoaded || !nordicCenter) ?
+        
             <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
                 <Placeholder as={Card.Title} animation="glow">
                     <Placeholder xs={6} />
@@ -51,12 +73,12 @@ function NordicCenterMap({ nordicCenter }) {
                     <Placeholder xs={6} /> <Placeholder xs={8} />
                 </Placeholder>
             </div>
-        )
         
-      }
+        
+      
 
-    return (
-        <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
+    :
+        <div className="bg-success bg-opacity-50 m-2 p-2 rounded" >
             <GoogleMap
             
             center={{ lat: nordicCenter.latitude, lng: nordicCenter.longitude }}
@@ -71,7 +93,13 @@ function NordicCenterMap({ nordicCenter }) {
           <Button onClick={calculateRoute}  >Show directions</Button> */}
           
         </div>
+    }
+{/* end */}
+                </Col>
+
+            </Row>
+        </div>
     )
 }
 
-export default NordicCenterMap
+export default InfoAndMapContainer
