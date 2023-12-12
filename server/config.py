@@ -2,7 +2,7 @@
 import os
 
 # Remote library imports
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api
@@ -13,7 +13,13 @@ from flask_bcrypt import Bcrypt
 # Local imports
 
 # Instantiate app, set attributes
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_url_path='',
+    static_folder='../client/build',
+    template_folder='../client/build'
+    )
 
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -38,4 +44,11 @@ bcrypt = Bcrypt(app)
 api = Api(app)
 
 # Instantiate CORS
-CORS(app, resources={"https://addressvalidation/*": {"origins": "*"}})
+CORS(app)
+
+#Routing stuff for deployment
+
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
