@@ -1,12 +1,10 @@
 
 import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
-import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
 
-import MapInfo from "./cards-lists-boxes/MapInfo";
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Row, Col, Button, Placeholder, Card } from 'react-bootstrap';
-import { useJsApiLoader, GoogleMap, DirectionsRenderer} from '@react-google-maps/api' 
+import { useJsApiLoader, GoogleMap, Marker, DirectionsRenderer} from '@react-google-maps/api' 
 
 import { UserContext } from "./App";
 
@@ -61,40 +59,40 @@ function InfoAndMapContainer({ nordicCenter }) {
                     </Row>
                 </Col>
                 <Col> 
-{/* start of insert */}
-                { (!isLoaded || !nordicCenter) ?
-        
-            <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
-                <Placeholder as={Card.Title} animation="glow">
-                    <Placeholder xs={6} />
-                </Placeholder>
-                <Placeholder as={Card.Text} animation="glow">
-                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-                    <Placeholder xs={6} /> <Placeholder xs={8} />
-                </Placeholder>
-            </div>
-        
-        
-      
 
-    :
-        <div className="bg-success bg-opacity-50 m-2 p-2 rounded" >
-            <GoogleMap
+                    { (!isLoaded || !nordicCenter) ?
             
-            center={{ lat: nordicCenter.latitude, lng: nordicCenter.longitude }}
-            zoom={15}
-            mapContainerStyle={{width: '100%', height: '400px'}}
+                        <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
+                            <Placeholder as={Card.Title} animation="glow">
+                                <Placeholder xs={6} />
+                            </Placeholder>
+                            <Placeholder as={Card.Text} animation="glow">
+                                <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                                <Placeholder xs={6} /> <Placeholder xs={8} />
+                            </Placeholder>
+                        </div>:
             
-          >
-          {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
-          </GoogleMap>
-          {/* <Col>Distance: {distance} </Col>
-          <Col>Duration: {duration} </Col>
-          <Button onClick={calculateRoute}  >Show directions</Button> */}
-          
-        </div>
-    }
-{/* end */}
+                        <div className="bg-success bg-opacity-50 m-2 p-2 rounded" >
+                            <GoogleMap
+                            
+                            options={{
+                                zoomControl: true,
+                                streetViewControl: true,
+                                mapTypeControl: true,
+                                fullscreenControl: true
+                            }}
+                            center={{ lat: nordicCenter.latitude, lng: nordicCenter.longitude }}
+                            zoom={15}
+                            mapContainerStyle={{width: '100%', height: '400px'}}
+                            
+                        >
+                            <Marker position={{ lat: nordicCenter.latitude, lng: nordicCenter.longitude }} />
+                        {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
+                        </GoogleMap>
+                        
+                        </div>
+                    }
+
                 </Col>
 
             </Row>

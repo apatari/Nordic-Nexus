@@ -2,10 +2,9 @@ import React, { useState, useEffect }  from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import WeatherBox from "./cards-lists-boxes/WeatherBox";
 import TripList from "./cards-lists-boxes/TripList";
-import NordicCenterInfo from "./cards-lists-boxes/NordicCenterInfo";
-import NordicCenterMap from "./cards-lists-boxes/NordicCenterMap";
+
 import { Row, Col, Container } from "react-bootstrap";
-import MapInfo from "./cards-lists-boxes/MapInfo";
+
 import InfoAndMapContainer from "./InfoAndMapContainer";
 
 
