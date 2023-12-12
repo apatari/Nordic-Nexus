@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
 
 const lib = ['places']

@@ -13,14 +13,6 @@ function Header({ user, setUser }) {
         console.log(user)
       }
 
-    const linkStyles = {
-        textDecoration: 'none',
-        color:'white'
-    }
-    let textDec = 'none'
-    if (user) {
-        textDec = 'underline'
-    }
 
 
     return (

@@ -15,7 +15,6 @@ function WeatherCard({ day, index }) {
         </Card>
     )
 }
-{/*  
-                        Short:  Long: {day.summary} </p> */}
+
 
 export default WeatherCard

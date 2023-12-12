@@ -1,6 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
-import TripCard from "./TripCard";
+
 import TripCardPlaceholder from "./TripCardPlaceholder";
 import { Row } from "react-bootstrap";
 

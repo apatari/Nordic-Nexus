@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ProgressBar } from "react-bootstrap";
+
 import NordicCenterCard from "./NordicCenterCard";
 import NordicCenterCardPlaceholder from "./NordicCenterCardPlaceholder";
 

@@ -33,7 +33,7 @@ function NordicCenterDetail() {
         })
             
         }
-    , [])
+    , [nordic_center_id])
 
 
     return (

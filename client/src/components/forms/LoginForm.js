@@ -1,7 +1,7 @@
 import React, { useState} from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function LoginForm({ onLogin, setSignupMode, signupMode }) {
