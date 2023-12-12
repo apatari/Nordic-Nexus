@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Placeholder, Card } from 'react-bootstrap';
 import { useJsApiLoader, GoogleMap, DirectionsRenderer} from '@react-google-maps/api' 
 
 import { UserContext } from "../App";
@@ -38,22 +38,30 @@ function NordicCenterMap({ nordicCenter }) {
         
       }
 
-      const showInputs = () => {
-        console.log(user, nordicCenter.address)
-    }
 
 
       if (!isLoaded || !nordicCenter) {
-        return <h2 className='m-3' >Loading...</h2>
+        return (
+            <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
+                <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                </Placeholder>
+                <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+            </div>
+        )
+        
       }
 
     return (
-        <div className="bg-info m-2 p-2 rounded" >
+        <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
             <GoogleMap
             
             center={{ lat: nordicCenter.latitude, lng: nordicCenter.longitude }}
             zoom={15}
-            mapContainerStyle={{width: '500px', height: '350px'}}
+            mapContainerStyle={{width: '100%', height: '350px'}}
             
           >
           {directionsResponse && <DirectionsRenderer directions={directionsResponse} />}
@@ -61,7 +69,7 @@ function NordicCenterMap({ nordicCenter }) {
           <Col>Distance: {distance} </Col>
           <Col>Duration: {duration} </Col>
           <Button onClick={calculateRoute}  >Show directions</Button>
-          <Button onClick={showInputs}  >Show addresses</Button>
+          
         </div>
     )
 }

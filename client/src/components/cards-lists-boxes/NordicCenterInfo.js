@@ -7,7 +7,7 @@ function NordicCenterInfo({ nordicCenter }) {
 
     else { return (
         
-        <div className="bg-primary bg-opacity-25 rounded p-3 fs-4 mt-2" >
+        <div className="bg-primary bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
         <Row>
             <h3>{nordicCenter.name}</h3>
         </Row>
@@ -23,8 +23,8 @@ function NordicCenterInfo({ nordicCenter }) {
                 {nordicCenter.map_url? <a href={nordicCenter.map_url} >Trail Map</a>: ""}
             </div>
         </Row>
-        <Row>
-            <Col>
+        <Row className="d-flex mt-auto " >
+            <Col className="" >
                 <Button>Add to Favorites</Button>
             </Col>
             <Col>

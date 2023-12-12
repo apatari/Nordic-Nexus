@@ -40,7 +40,7 @@ function NordicCenterDetail() {
             <Container>
         
             <Row className="mt-3" >
-                <Col> <NordicCenterInfo nordicCenter={nordicCenter} /> </Col>
+                <Col md={5} > <NordicCenterInfo nordicCenter={nordicCenter} /> </Col>
                 <Col> <NordicCenterMap nordicCenter={nordicCenter}  /> </Col>
 
             </Row>
