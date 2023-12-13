@@ -4,7 +4,7 @@ import { Row, Col, Button, Placeholder, Card } from "react-bootstrap";
 function NordicCenterInfo({ nordicCenter }) {
 
     if (!nordicCenter) {
-        <div className="bg-primary bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
+        <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
             <Placeholder as={Card.Title} animation="glow">
                 <Placeholder xs={6} />
             </Placeholder>
@@ -19,7 +19,7 @@ function NordicCenterInfo({ nordicCenter }) {
 
     else { return (
         
-        <div className="bg-primary bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
+        <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
         <Row>
             <h3>{nordicCenter.name}</h3>
         </Row>

@@ -15,12 +15,7 @@ class CheckSession(Resource):
         user = User.query.filter_by(id = session.get('user_id')).first()
 
         if user:
-            response_body = {
-                "id": user.id,
-                "username": user.username,
-                "address": user.address,
-                "trips": user.trips
-            }
+            response_body = user.to_dict()
             return response_body, 200
         else:
             return {"errors": "User not logged in"}, 401
