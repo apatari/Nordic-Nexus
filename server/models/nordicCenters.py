@@ -1,7 +1,8 @@
 from sqlalchemy_serializer import SerializerMixin
-# from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 import validators
+# from trips import Trip
 
 from config import db
 
@@ -15,6 +16,13 @@ class NordicCenter(db.Model, SerializerMixin):
     longitude = db.Column(db.Float, nullable=False)
     report_url = db.Column(db.String)
     map_url = db.Column(db.String)
+
+    trips = db.relationship('Trip', back_populates='nordic_center')
+
+    trip_users = association_proxy('trips', 'user',
+                                     creator = lambda user_obj: Trip(user=user_obj))
+    
+    serialize_rules = ('-trips.nordic_center',)
 
     @validates('name')
     def validate_name(self, key, name):
@@ -48,9 +56,6 @@ class NordicCenter(db.Model, SerializerMixin):
         else:
             raise ValueError(f"Invalid URL for {'Trail Report' if key == 'report_url' else 'Trail Map'}")
     
-        # try:
-        #     validators.url(url)
-        #     return url
-        # except:
-        #     raise ValueError("Please enter a valid URL")
+    def __repr__(self):
+        return f'Nordic Center {self.name}, ID: {self.id}'
         

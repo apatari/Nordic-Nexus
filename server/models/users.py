@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.hybrid import hybrid_property
+# from trips import Trip
 
 from config import db, bcrypt
 
@@ -12,6 +13,13 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String, unique=True, nullable=False)
     _password_hash = db.Column(db.String)
     address = db.Column(db.String, nullable=False)
+
+    trips = db.relationship('Trip', back_populates='user')
+
+    trip_centers = association_proxy('trips', 'nordic_center',
+                                     creator = lambda nc_obj: Trip(nordic_center=nc_obj))
+    
+    serialize_rules = ('-trips.user', '-_password_hash')
 
     @validates('username')
     def validate_username(self, key, name):

@@ -11,6 +11,7 @@ from config import app, db, api
 # Add your model imports
 from models.users import User
 from models.nordicCenters import NordicCenter
+from models.trips import Trip
 
 # Resource imports
 from resources.login import Login
