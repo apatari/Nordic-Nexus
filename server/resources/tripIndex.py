@@ -5,6 +5,6 @@ from models.trips import Trip
 class TripIndex(Resource):
 
     def get(self):
-        trips = [trip.to_dict() for trip in Trip.query.order_by(Trip.date).all()]
+        trips = [trip.to_dict() for trip in Trip.query.order_by(Trip.date.desc()).all()]
 
         return trips, 200

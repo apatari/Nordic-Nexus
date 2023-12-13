@@ -24,7 +24,7 @@ function NordicCenters () {
                     <NordicCenterList nordicCenters={nordicCenters} />
                 </Col>
                 <Col>
-                    <TripList />
+                    <TripList center={"all"} />
                     <MyCard />
                 </Col>
             </Row>

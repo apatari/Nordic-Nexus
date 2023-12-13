@@ -48,7 +48,7 @@ function NordicCenterDetail() {
                 
             </Row>
             <Row className="">
-                <TripList />
+                <TripList center={nordic_center_id} />
             </Row>
 
 
