@@ -32,8 +32,8 @@ class Trip(db.Model, SerializerMixin):
     
     @validates('comment')
     def validate_comment(self, key, comm):
-        if len(comm) > 1000:
-            raise ValueError("Comment must be fewer than 1000 characters")
+        if len(comm) > 200:
+            raise ValueError("Comment must be fewer than 200 characters")
         return comm
     
     def __repr__(self):
