@@ -25,7 +25,7 @@ function NordicCenters () {
         } else if (sortBy === "nameDesc") {
             return (a.name < b.name)? 1 : -1
         } else if (sortBy === "rating") {
-            if (!a.trips || !b.trips) return 0
+            if (!a.trips || !b.trips || a.trips.length === 0 || b.trips.length === 0 ) return 0
             else if ((a.trips.map(trip => trip.snow_cover + trip.grooming + trip.weather + trip.fun_factor)
             .reduce((x,y) => x+y) / a.trips.length) <= (b.trips.map(trip => trip.snow_cover + trip.grooming + trip.weather + trip.fun_factor)
             .reduce((x,y) => x+y) / b.trips.length) ) { return 1
