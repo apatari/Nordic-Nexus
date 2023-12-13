@@ -12,6 +12,7 @@ import NordicCenterDetail from "./NordicCenterDetail";
 
 export const UserContext = createContext(null)
 
+
 function App() {
   
   const [user, setUser] = useState(null)

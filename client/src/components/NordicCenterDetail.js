@@ -21,7 +21,7 @@ function NordicCenterDetail() {
         .then(res => res.json())
         .then(data => {
             setNordicCenter(data)
-            const weatherFetchLink = `http://api.openweathermap.org/data/3.0/onecall?` + 
+            const weatherFetchLink = `https://api.openweathermap.org/data/3.0/onecall?` + 
                 `lat=${data.latitude}&lon=${data.longitude}&units=imperial&exclude=minutely,hourly` + 
                 `&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
             fetch(weatherFetchLink)
