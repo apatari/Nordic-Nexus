@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
+import datetime
 
 
 # Remote library imports
@@ -11,6 +12,7 @@ from app import app
 from model import db
 from models.users import User
 from models.nordicCenters import NordicCenter
+from models.trips import Trip
 
 if __name__ == '__main__':
     
@@ -19,10 +21,12 @@ if __name__ == '__main__':
         # Seed code goes here!
 
         print("Deleting tables...")
+        Trip.query.delete()
         User.query.delete()
         NordicCenter.query.delete()
 
-        print("Adding users...")
+
+        print("Adding...")
         
         user1 = User(username="user1", address='144 Belmont Avenue, Brattleboro, VT')
         user1.password_hash='bigPuppy'
@@ -67,4 +71,16 @@ if __name__ == '__main__':
         db.session.add(nc2)
         db.session.add(nc3)
         db.session.add(nc4)
+        db.session.commit()
+
+        trips = [
+            Trip(user_id=1, nordic_center_id=1, snow_cover=3, grooming=2, weather=4, fun_factor=5, date=datetime.date(2022,2,1)),
+            Trip(user_id=1, nordic_center_id=2, snow_cover=2, grooming=1, weather=2, fun_factor=2, date=datetime.date(2022,2,2)),
+            Trip(user_id=1, nordic_center_id=3, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,3)),
+            Trip(user_id=1, nordic_center_id=2, snow_cover=5, grooming=2, weather=5, fun_factor=3, date=datetime.date(2022,2,4)),
+
+        ]
+
+        for trip in trips:
+            db.session.add(trip)
         db.session.commit()
