@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, session
+from flask import request, session, render_template
 from flask_restful import Resource
 
 # Local imports
@@ -32,6 +32,11 @@ api.add_resource(Signup, '/api/signup')
 api.add_resource(Logout, '/api/logout')
 api.add_resource(NordicCenterIndex, '/api/nordiccenters')
 api.add_resource(NordicCenterByID, '/api/nordiccenters/<int:id>')
+
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
