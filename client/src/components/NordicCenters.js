@@ -10,6 +10,7 @@ function NordicCenters () {
     const [nordicCenters, setNordicCenters] = useState(null)
     const [searchText, setSearchText] = useState("")
     const [sortBy, setSortBy] = useState("all")
+    
 
     useEffect(() => {
         fetch('/api/nordiccenters')
@@ -26,22 +27,30 @@ function NordicCenters () {
         } else if (sortBy === "rating") {
             if (!a.trips || !b.trips) return 0
             else if ((a.trips.map(trip => trip.snow_cover + trip.grooming + trip.weather + trip.fun_factor)
-            .reduce((x,y) => x+y) / a.trips.length) < (b.trips.map(trip => trip.snow_cover + trip.grooming + trip.weather + trip.fun_factor)
+            .reduce((x,y) => x+y) / a.trips.length) <= (b.trips.map(trip => trip.snow_cover + trip.grooming + trip.weather + trip.fun_factor)
             .reduce((x,y) => x+y) / b.trips.length) ) { return 1
             }
             else return -1
         }
     }
 
-    const centersToDisplay = nordicCenters? nordicCenters.sort(compareFn) : []
+    const sortedCenters = nordicCenters? nordicCenters.sort(compareFn) : []
+    const centersToDisplay = sortedCenters.filter(center => {
+        return (center.name.toLowerCase().includes(searchText.toLowerCase()) || center.address.toLowerCase().includes(searchText.toLowerCase()) )})
 
     return (
         <div className="" >
-            <SearchBar searchText={searchText} setSearchText={setSearchText} sortBy={sortBy} setSortBy={setSortBy} />
+            <SearchBar 
+                searchText={searchText} 
+                setSearchText={setSearchText} 
+                sortBy={sortBy} 
+                setSortBy={setSortBy} 
+                />
             
             <Row>
                 <Col lg={9} >
-                    <NordicCenterList nordicCenters={centersToDisplay} />
+                    {centersToDisplay? <NordicCenterList nordicCenters={centersToDisplay} /> :
+                        <NordicCenterList nordicCenters={nordicCenters} />}
                 </Col>
                 <Col>
                     <TripList center={"all"} />
