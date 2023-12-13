@@ -65,7 +65,7 @@ function InfoAndMapContainer({ nordicCenter }) {
 
                     { (!isLoaded || !nordicCenter) ?
             
-                        <div className="bg-info bg-opacity-50 m-2 p-2 rounded" >
+                        <div className="bg-success bg-opacity-50 m-2 p-2 rounded" >
                             <Placeholder as={Card.Title} animation="glow">
                                 <Placeholder xs={6} />
                             </Placeholder>
