@@ -28,10 +28,10 @@ function TripList( {center} ) {
             <Row>
                 {(center === "all")?
                 trips.slice(0,TRIP_COUNT).map(trip => {
-                    return <TripCard trip={trip}/>
+                    return <TripCard trip={trip} key={trip.id}/>
                 }) : 
                 trips.filter(trip => trip.nordic_center.id === parseInt(center)).slice(0,TRIP_COUNT).map(trip => {
-                    return <TripCard trip={trip}/>
+                    return <TripCard trip={trip}key={trip.id} />
                 })
             }
                 

@@ -1,7 +1,15 @@
 import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-function SearchBar() {
+function SearchBar({ searchText, setSearchText, sortBy, setSortBy }) {
+
+    const handleSortChange = (e) => {
+        setSortBy(e.target.value)
+        
+    }
+
+
+
     return (
         <div className="bg-success" >
             <Form>
@@ -11,11 +19,12 @@ function SearchBar() {
                     </Col>
                     <Col sm={3} className="m-2" ><Button>Search</Button></Col>
                     <Col sm={2} className="m-2 me-5" >
-                        <Form.Select aria-label="Default select example" className="bg-light bg-opacity-75">
-                            <option>Sort Results:</option>
-                            <option value="1">By name</option>
-                            <option value="2">By average rating</option>
-                            <option value="3">By distance from you</option>
+                        <Form.Select  value={sortBy} onChange={handleSortChange} aria-label="Default select example" className="bg-light bg-opacity-75">
+                            <option>Sort By:</option>
+                            <option value="name">Name A-Z</option>
+                            <option value="nameDesc">Name Z-A</option>
+                            <option value="rating">Average rating</option>
+                            
                         </Form.Select>
                     </Col>
                 </Row>
