@@ -6,6 +6,24 @@ function NordicCenterInfo({ nordicCenter }) {
 
     const [user, setUser] = useContext(UserContext)
 
+    const handleFavClick = () => {
+        fetch('/api/favorites', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({"user_id": user.id, "nordic_center_id": nordicCenter.id})
+        })
+        .then(res => {
+            if (res.status === 201) {
+                return res.json()
+                .then(favorite => setUser({...user, favorites: [... user.favorites, favorite]}))
+            } else {
+                setUser({...user, favorites: user.favorites.filter(item => !(item.user_id === user.id && item.nordic_center_id === nordicCenter.id))})
+            }
+        })
+    }
+
     if (!nordicCenter) {
         <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
             <Placeholder as={Card.Title} animation="glow">
@@ -41,8 +59,8 @@ function NordicCenterInfo({ nordicCenter }) {
         <Row className="d-flex mt-auto " >
             <Col className="" >
                 { (user.favorites.map(fav => fav.nordic_center_id).includes(nordicCenter.id)) ? 
-                    <Button className="btn-warning" >Remove from Favorites</Button> :
-                    <Button>Add to Favorites</Button>  }  
+                    <Button className="btn-warning" onClick={handleFavClick} >Remove from Favorites</Button> :
+                    <Button onClick={handleFavClick} >Add to Favorites</Button>  }  
             </Col>
             <Col>
                 <Button>Edit Info</Button>
