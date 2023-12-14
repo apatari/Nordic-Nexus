@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, Form, Button, ProgressBar } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserContext } from "../App";
 import { useFormik } from "formik";
@@ -87,12 +87,21 @@ function TripForm() {
 
                             </Form.Select>
                         </Col>
-                        <Col>
-                            <Form.Control placeholder="date" />
+                        <Col >
+                            <Form.Control  className="w-50" placeholder="date" />
                         </Col>
                     </Row>
+                    <div className="mx-4 mt-3 mb-1 fs-4" >
+                        <strong>Ratings</strong> 
+                    <ProgressBar className="fs-6" >
+                        <ProgressBar striped variant="primary" label={`Snow: ${formik.values.snow_cover}`} now={formik.values.snow_cover * 5} key={4} />
+                        <ProgressBar striped variant="success" label={`Groom: ${formik.values.grooming}`} now={formik.values.grooming * 5} key={1} />
+                        <ProgressBar striped variant="info" label={`Weather: ${formik.values.weather}`} now={formik.values.weather * 5} key={2} />
+                        <ProgressBar striped variant="warning" label={`Fun: ${formik.values.fun_factor}`} now={formik.values.fun_factor * 5} key={3} />
+                    </ProgressBar>
+                    </div>
                     <Row className="my-2 ms-3" >
-                        <Col className="me-3 my-auto fs-5" sm={4} >Snow Cover:</Col> 
+                        <Col className="me-3 my-auto fs-5" sm={4} >Snow Cover</Col> 
                         <Col>
                         <div className="my-3" > 
                             {[0,1,2,3,4,5].map((num) => {
@@ -115,7 +124,7 @@ function TripForm() {
                             </Col>
                     </Row>
                     <Row className="my-2 ms-3" >
-                        <Col className="me-3 my-auto fs-5" sm={4} >Grooming:</Col> 
+                        <Col className="me-3 my-auto fs-5" sm={4} >Grooming</Col> 
                         <Col>
                         <div className="my-3" > 
                             {[0,1,2,3,4,5].map((num) => {
@@ -138,7 +147,7 @@ function TripForm() {
                             </Col>
                     </Row>
                     <Row className="my-2 ms-3" >
-                        <Col className="me-3 my-auto fs-5" sm={4} >Weather:</Col> 
+                        <Col className="me-3 my-auto fs-5" sm={4} >Weather</Col> 
                         <Col>
                         <div className="my-3" > 
                             {[0,1,2,3,4,5].map((num) => {
@@ -161,7 +170,7 @@ function TripForm() {
                             </Col>
                     </Row>
                     <Row className="my-2 ms-3" >
-                        <Col className="me-3 my-auto fs-5" sm={4} >Fun Factor:</Col> 
+                        <Col className="me-3 my-auto fs-5" sm={4} >Fun Factor</Col> 
                         <Col>
                         <div className="my-3" > 
                             {[0,1,2,3,4,5].map((num) => {

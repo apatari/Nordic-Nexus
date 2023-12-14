@@ -25,7 +25,7 @@ function NordicCenterCard({ nordicCenter }) {
                 <Card.Body >
                     <Card.Text className="fs-5" >Average rating:</Card.Text>
                     {nordicCenter.trips?  
-                    <ProgressBar className="mb-4 fs-5" >
+                    <ProgressBar className="mb-4 fs-6" >
                         <ProgressBar striped variant="primary" label={`Snow: ${snowAvg / 5}`} now={snowAvg} key={4} />
                         <ProgressBar striped variant="success" label={`Groom: ${groomAvg / 5}`} now={groomAvg} key={1} />
                         <ProgressBar striped variant="info" label={`Weather: ${weatherAvg / 5}`} now={weatherAvg} key={2} />
