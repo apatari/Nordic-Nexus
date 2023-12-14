@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 
 function TripForm() {
+
+    const [nordicCenters, setNordicCenters] = useState(null)
+    
+    useEffect(() => {
+        fetch('/api/nordiccenters')
+        .then(res => res.json())
+        .then(data => setNordicCenters(data))
+    }, [])
+
+
+
+
     return (
         <div className="ms-4" >
             <Col lg={8} className="m-5 p-3 bg-success bg-opacity-25 rounded-4" >
                 <h3 className="text-primary" >New Trip</h3>
-                <Form>
-                    <Row>
+                <Form className="my-3" >
+                    <Row className="mx-2" >
                         <Col>
                             <Form.Select  aria-label="Default select example" className="bg-light bg-opacity-75">
                                 <option>Nordic Center:</option>
-                                <option value="name">Name A-Z</option>
+                                {nordicCenters? nordicCenters.map(center =>{
+                                    return <option key={center.id} value={center.id} > {center.name}</option>
+                                }): ""  }
+
+                                {/* <option value="name">Name A-Z</option>
                                 <option value="nameDesc">Name Z-A</option>
-                                <option value="rating">Average rating</option>
+                                <option value="rating">Average rating</option> */}
                                 
                             </Form.Select>
                         </Col>
