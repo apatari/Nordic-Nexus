@@ -23,11 +23,11 @@ class TripIndex(Resource):
 
             new_trip = Trip(
                 user_id=json['user_id'], 
-                nordic_center_id=json['nordic_center_id'], 
-                snow_cover=json['snow_cover'], 
-                grooming=json['grooming'], 
-                weather=json['weather'], 
-                fun_factor=json['fun_factor'], 
+                nordic_center_id=int(json['nordic_center_id']), 
+                snow_cover=int(json['snow_cover']), 
+                grooming=int(json['grooming']), 
+                weather=int(json['weather']), 
+                fun_factor=int(json['fun_factor']), 
                 date=date,
                 comment=json['comment']
 

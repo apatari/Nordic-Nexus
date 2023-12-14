@@ -4,14 +4,20 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { UserContext } from "../App";
 import { useFormik } from "formik";
 import * as yup from "yup"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
 
 function TripForm() {
 
     const [nordicCenters, setNordicCenters] = useState(null)
+    const [errors, setErrors] = useState([])
 
     const [user] = useContext(UserContext)
 
     const history = useHistory()
+
+    const [tripDate, setTripDate] = useState(new Date())
+    const today = new Date()
     
     useEffect(() => {
         fetch('/api/nordiccenters')
@@ -63,7 +69,28 @@ function TripForm() {
 
         },
         validationSchema: formSchema,
-        onSubmit: (values) => {console.log({...values, "user_id": user.id})}
+        onSubmit: (values) => {
+            fetch('/api/trips', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({...values, "user_id": user.id, "date": tripDate.toJSON().slice(0,10)})
+            })
+            .then(r => {
+                if (r.ok) {
+                     
+                    history.push('/')    
+                } else {
+                    r.json().then(err => setErrors((currentErrors) => [err.errors]))
+                }
+            })
+            
+            
+            
+            
+            
+            console.log({...values, "user_id": user.id, "date": tripDate.toJSON().slice(0,10)})}
     })
 
     return (
@@ -72,7 +99,7 @@ function TripForm() {
                 <h3 className="text-primary" >New Trip</h3>
                 <Form className="my-3" onSubmit={formik.handleSubmit} >
                     <Row className="mx-2" >
-                        <Col>
+                        <Col md={6} >
                             <Form.Select  
                                 aria-label="Default select example" 
                                 id="nordic_center_id" 
@@ -87,8 +114,11 @@ function TripForm() {
 
                             </Form.Select>
                         </Col>
-                        <Col >
-                            <Form.Control  className="w-50" placeholder="date" />
+                        <Col className="ms-2"  > <strong>Date:</strong>  
+                            <DatePicker className="ms-2" selected={tripDate} maxDate={today} onChange={(date) => {
+                                setTripDate(date)
+                                console.log(date.toJSON().slice(0,10))
+                            }} />
                         </Col>
                     </Row>
                     <div className="mx-4 mt-3 mb-1 fs-4" >
