@@ -26,9 +26,7 @@ function NordicCenterDetail() {
                 `&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
             fetch(weatherFetchLink)
             .then(res => res.json())
-            .then(data => 
-                {setWeather(data)
-                console.log(data)})
+            .then(data => setWeather(data))
         
         })
             

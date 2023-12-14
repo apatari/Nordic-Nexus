@@ -14,10 +14,13 @@ class User(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String)
     address = db.Column(db.String, nullable=False)
 
-    trips = db.relationship('Trip', back_populates='user')
-
+    trips = db.relationship('Trip', back_populates='user', cascade='all')
     trip_centers = association_proxy('trips', 'nordic_center',
                                      creator = lambda nc_obj: Trip(nordic_center=nc_obj))
+    
+    favorites = db.relationship('Favorite', back_populates='user', cascade='all')
+    favorite_centers = association_proxy('favorites', 'nordic_center',
+                                         creator = lambda nc_obj: Trip(nordic_center=nc_obj))
     
     serialize_rules = ('-trips.user', '-_password_hash')
 

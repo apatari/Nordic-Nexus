@@ -12,6 +12,7 @@ from config import app, db, api
 from models.users import User
 from models.nordicCenters import NordicCenter
 from models.trips import Trip
+from models.favorites import Favorite
 
 # Resource imports
 from resources.login import Login

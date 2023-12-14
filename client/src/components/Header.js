@@ -10,7 +10,6 @@ function Header({ user, setUser }) {
             setUser(null);
           }
         });
-        console.log(user)
       }
 
 

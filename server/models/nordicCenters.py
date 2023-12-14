@@ -18,10 +18,13 @@ class NordicCenter(db.Model, SerializerMixin):
     map_url = db.Column(db.String)
 
     trips = db.relationship('Trip', back_populates='nordic_center')
-
     trip_users = association_proxy('trips', 'user',
                                      creator = lambda user_obj: Trip(user=user_obj))
     
+    favorites = db.relationship('Favorite', back_populates='nordic_center', cascade='all')
+    favorite_users = association_proxy('favorites', 'user',
+                                         creator = lambda user_obj: Trip(user=user_obj))
+
     serialize_rules = ('-trips.nordic_center',)
 
     @validates('name')

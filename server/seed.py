@@ -13,6 +13,7 @@ from model import db
 from models.users import User
 from models.nordicCenters import NordicCenter
 from models.trips import Trip
+from models.favorites import Favorite
 
 if __name__ == '__main__':
     
@@ -86,10 +87,20 @@ if __name__ == '__main__':
             Trip(user_id=1, nordic_center_id=1, snow_cover=2, grooming=5, weather=2, fun_factor=5, date=datetime.date(2022,2,6),
                  comment="Not a lot of snow but the groomers made it work.  Tons of fun today on Grouse and Chickadee loops!"),
             Trip(user_id=1, nordic_center_id=4, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,7),
-                 comment="Wow what a wonderful day.  Went out Ellis River and up to Maple Mountain.  Great packed powder for skating.  Don't forget to stop at the cocao hut on the way back!"),
+                 comment="Wow what a wonderful day.  Went out Ellis River and up to Maple Mountain.  Great packed powder for skating.  Don't forget to stop at the hot chocolate hut!"),
 
         ]
 
         for trip in trips:
             db.session.add(trip)
+        db.session.commit()
+
+        favorites = [
+            Favorite(user_id=1, nordic_center_id=1),
+            Favorite(user_id=1, nordic_center_id=2),
+            
+        ]
+
+        for favorite in favorites:
+            db.session.add(favorite)
         db.session.commit()
