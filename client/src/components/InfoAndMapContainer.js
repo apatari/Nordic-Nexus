@@ -17,7 +17,7 @@ function InfoAndMapContainer({ nordicCenter }) {
     const [duration, setDuration] = useState('')
     
 
-    const user = useContext(UserContext)
+    const [user] = useContext(UserContext)
 
     const {isLoaded} = useJsApiLoader({
         libraries: lib,

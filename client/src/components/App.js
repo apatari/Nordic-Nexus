@@ -29,16 +29,18 @@ function App() {
 
   if (!user) return (
     <div>
-      <Header user={user} setUser={setUser} />
-      <Login onLogin={setUser}/>
+      <UserContext.Provider value={[user, setUser]}>
+        <Header />
+        <Login onLogin={setUser}/>
+      </UserContext.Provider>
     </div>
   )
 
   return (
     <div>
-      <Header user={user} setUser={setUser} ></Header>
+    <UserContext.Provider value={[user, setUser]}>
+      <Header />
 
-    <UserContext.Provider value={user}>
       <Switch>
         <Route exact path="/">
             <Home/>

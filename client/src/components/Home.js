@@ -5,7 +5,7 @@ import { UserContext } from "./App";
 
 function Home() {
 
-    const user = useContext(UserContext)
+    const [user] = useContext(UserContext)
 
     return (
         <div className="m-4" >

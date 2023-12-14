@@ -4,7 +4,7 @@ import { UserContext } from "../App";
 
 function NordicCenterInfo({ nordicCenter }) {
 
-    const user = useContext(UserContext)
+    const [user, setUser] = useContext(UserContext)
 
     if (!nordicCenter) {
         <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
@@ -40,7 +40,9 @@ function NordicCenterInfo({ nordicCenter }) {
         </Row>
         <Row className="d-flex mt-auto " >
             <Col className="" >
-                { (user.favorites.map(fav => fav.nordic_center_id).includes(nordicCenter.id)) ? <Button className="btn-warning" >Remove from Favorites</Button> :<Button>Add to Favorites</Button>  }  
+                { (user.favorites.map(fav => fav.nordic_center_id).includes(nordicCenter.id)) ? 
+                    <Button className="btn-warning" >Remove from Favorites</Button> :
+                    <Button>Add to Favorites</Button>  }  
             </Col>
             <Col>
                 <Button>Edit Info</Button>

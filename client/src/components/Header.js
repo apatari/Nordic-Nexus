@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap'
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { UserContext } from "./App";
 
-function Header({ user, setUser }) {
+
+function Header() {
 
     const handleLogoutClick = () => {
         fetch("/api/logout", { method: "DELETE" }).then((r) => {
@@ -12,7 +14,7 @@ function Header({ user, setUser }) {
         });
       }
 
-
+    const [user, setUser] = useContext(UserContext)
 
     return (
         <div>
