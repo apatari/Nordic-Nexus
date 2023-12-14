@@ -22,6 +22,7 @@ from resources.logout import Logout
 from resources.nordicCenterIndex import NordicCenterIndex
 from resources.nordicCenterByID import NordicCenterByID
 from resources.tripIndex import TripIndex
+from resources.favoriteIndex import FavoriteIndex
 
 # Views don't go here!
 
@@ -36,6 +37,7 @@ api.add_resource(Logout, '/api/logout')
 api.add_resource(NordicCenterIndex, '/api/nordiccenters')
 api.add_resource(NordicCenterByID, '/api/nordiccenters/<int:id>')
 api.add_resource(TripIndex, '/api/trips')
+api.add_resource(FavoriteIndex, '/api/favorites')
 
 # @app.route('/')
 # @app.route('/<int:id>')
