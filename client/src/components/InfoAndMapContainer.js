@@ -57,7 +57,7 @@ function InfoAndMapContainer({ nordicCenter }) {
                                 <h4>Distance: {distance}</h4>
                             </div>
                                  : ""}
-                            <Button onClick={calculateRoute} className="btn-info" >Show route on map &#8594; </Button>
+                            <Button onClick={calculateRoute} className="btn-info ms-2 " >Show route on map &#8594; </Button>
                         </div>
                     </Row>
                 </Col>
