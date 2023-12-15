@@ -22,6 +22,7 @@ if __name__ == '__main__':
         # Seed code goes here!
 
         print("Deleting tables...")
+        Favorite.query.delete()
         Trip.query.delete()
         User.query.delete()
         NordicCenter.query.delete()
@@ -75,18 +76,18 @@ if __name__ == '__main__':
         db.session.commit()
 
         trips = [
-            Trip(user_id=1, nordic_center_id=1, snow_cover=3, grooming=2, weather=4, fun_factor=5, date=datetime.date(2022,2,1)),
-            Trip(user_id=1, nordic_center_id=2, snow_cover=2, grooming=4, weather=2, fun_factor=2, date=datetime.date(2022,2,2)),
-            Trip(user_id=1, nordic_center_id=3, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,3),
+            Trip(user_id=user1.id, nordic_center_id=nc1.id, snow_cover=3, grooming=2, weather=4, fun_factor=5, date=datetime.date(2022,2,1)),
+            Trip(user_id=user1.id, nordic_center_id=nc2.id, snow_cover=2, grooming=4, weather=2, fun_factor=2, date=datetime.date(2022,2,2)),
+            Trip(user_id=user2.id, nordic_center_id=nc3.id, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,3),
                  comment="There's always snow up on Prospect!"),
-            Trip(user_id=1, nordic_center_id=2, snow_cover=5, grooming=2, weather=5, fun_factor=3, date=datetime.date(2022,2,4),
+            Trip(user_id=user2.id, nordic_center_id=nc2.id, snow_cover=5, grooming=2, weather=5, fun_factor=3, date=datetime.date(2022,2,4),
                  comment="The volunteers at the BOC really keep it in great shape."),
-            Trip(user_id=1, nordic_center_id=1, snow_cover=4, grooming=4, weather=3, fun_factor=4, date=datetime.date(2022,2,5),
+            Trip(user_id=user1.id, nordic_center_id=nc1.id, snow_cover=4, grooming=4, weather=3, fun_factor=4, date=datetime.date(2022,2,5),
                  comment="Wild Wings is a great spot. Plenty of snow."),
 
-            Trip(user_id=1, nordic_center_id=1, snow_cover=2, grooming=5, weather=2, fun_factor=5, date=datetime.date(2022,2,6),
+            Trip(user_id=user3.id, nordic_center_id=nc1.id, snow_cover=2, grooming=5, weather=2, fun_factor=5, date=datetime.date(2022,2,6),
                  comment="Not a lot of snow but the groomers made it work.  Tons of fun today on Grouse and Chickadee loops!"),
-            Trip(user_id=1, nordic_center_id=4, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,7),
+            Trip(user_id=user3.id, nordic_center_id=nc4.id, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,7),
                  comment="Wow what a wonderful day.  Went out Ellis River and up to Maple Mountain.  Great packed powder for skating.  Don't forget to stop at the hot chocolate hut!"),
 
         ]
@@ -96,8 +97,11 @@ if __name__ == '__main__':
         db.session.commit()
 
         favorites = [
-            Favorite(user_id=1, nordic_center_id=1),
-            Favorite(user_id=1, nordic_center_id=2),
+            Favorite(user_id=user1.id, nordic_center_id=nc1.id),
+            Favorite(user_id=user1.id, nordic_center_id=nc2.id),
+            Favorite(user_id=user2.id, nordic_center_id=nc1.id),
+            Favorite(user_id=user2.id, nordic_center_id=nc3.id),
+            Favorite(user_id=user3.id, nordic_center_id=nc4.id),
             
         ]
 
