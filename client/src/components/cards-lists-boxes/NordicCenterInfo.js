@@ -25,20 +25,26 @@ function NordicCenterInfo({ nordicCenter }) {
     }
 
     if (!nordicCenter) {
-        <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
-            <Placeholder as={Card.Title} animation="glow">
-                <Placeholder xs={6} />
-            </Placeholder>
-            <Placeholder as={Card.Text} animation="glow">
-                <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
-                <Placeholder xs={6} /> <Placeholder xs={8} />
-            </Placeholder>
-            <Placeholder.Button variant="primary" xs={6} />
+        return(
+        <div className="" >
+            <Card style={{ width: '100%', height: '18rem' }}>
+                
+                <Card.Body>
+                <Placeholder as={Card.Title} animation="glow">
+                    <Placeholder xs={6} />
+                </Placeholder>
+                <Placeholder as={Card.Text} animation="glow">
+                    <Placeholder xs={7} /> <Placeholder xs={4} /> <Placeholder xs={4} />{' '}
+                    <Placeholder xs={6} /> <Placeholder xs={8} />
+                </Placeholder>
+                <Placeholder.Button variant="primary" xs={6} />
+                </Card.Body>
+            </Card>
         </div>
-        
+        )
     }
 
-    else { return (
+    return (
         
         <div className="bg-info bg-opacity-25 rounded p-3 fs-4 mt-2 h-100 d-flex flex-column" >
         <Row>
@@ -67,7 +73,8 @@ function NordicCenterInfo({ nordicCenter }) {
             </Col>
         </Row>
     </div>
-    ) }
+    ) 
 }
+
 
 export default NordicCenterInfo
