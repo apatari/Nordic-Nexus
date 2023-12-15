@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Form, Button, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function LoginForm({ onLogin, setSignupMode, signupMode }) {
+function LoginForm({ onLogin, setSignupMode, signupMode, setIsLoading }) {
 
     const [errors, setErrors] = useState([])
     const history = useHistory()
@@ -27,6 +27,7 @@ function LoginForm({ onLogin, setSignupMode, signupMode }) {
         validateOnChange: false,
         validateOnBlur: false,
         onSubmit: (values) => {
+            setIsLoading(true)
             setErrors([])
             fetch("/api/login", {
                 method: "POST",
