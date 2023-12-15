@@ -4,7 +4,13 @@ from sqlalchemy.orm import validates
 import validators
 # from trips import Trip
 
+import requests
+import os
+from dotenv import load_dotenv
+
 from config import db
+
+load_dotenv()
 
 class NordicCenter(db.Model, SerializerMixin):
     __tablename__ = 'nordic_centers'
@@ -36,10 +42,19 @@ class NordicCenter(db.Model, SerializerMixin):
         return name
     
     @validates('address')
-    def validate_address(self, key, add):
-        if not add or not len(add):
+    def validate_address(self, key, address):
+        if not address or not len(address):
             raise ValueError("Must provide an address")
-        return add
+        url = 'https://addressvalidation.googleapis.com/v1:validateAddress?key=' + os.environ.get('REACT_APP_GOOGLE_MAPS_KEY')
+
+        body= {"address": {
+            "addressLines": [address]}}
+
+        resp = requests.post(url, json=body)
+
+        if not(resp.json()['result']['address']['addressComponents'][0]['confirmationLevel'] == "CONFIRMED"):
+            raise ValueError("Address cannot be used by Google Maps")
+        return address
     
     @validates('latitude', 'longitude')
     def validate_coordinates(self, key, value):

@@ -2,9 +2,15 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.hybrid import hybrid_property
+
+import requests
+import os
+from dotenv import load_dotenv
 # from trips import Trip
 
 from config import db, bcrypt
+
+load_dotenv()
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
@@ -36,6 +42,16 @@ class User(db.Model, SerializerMixin):
     def validate_address(self, key, address):
         if not address or len(address) < 1:
             raise ValueError("Must provide an address")
+        url = 'https://addressvalidation.googleapis.com/v1:validateAddress?key=' + os.environ.get('REACT_APP_GOOGLE_MAPS_KEY')
+
+        body= {"address": {
+            "addressLines": [address]}}
+
+        resp = requests.post(url, json=body)
+
+        if not(resp.json()['result']['address']['addressComponents'][0]['confirmationLevel'] == "CONFIRMED"):
+            raise ValueError("Address cannot be used by Google Maps")
+
         return address
 
     
