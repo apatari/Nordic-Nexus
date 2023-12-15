@@ -9,7 +9,7 @@ function TripList( {center} ) {
 
     const TRIP_COUNT = 4
 
-    const [trips, setTrips] = useState([])
+    const [trips, setTrips] = useState(null)
 
     useEffect(() => {
         fetch('/api/trips')
