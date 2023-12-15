@@ -17,7 +17,7 @@ function NordicCenterInfo({ nordicCenter }) {
         .then(res => {
             if (res.status === 201) {
                 return res.json()
-                .then(favorite => setUser({...user, favorites: [... user.favorites, favorite]}))
+                .then(favorite => setUser({...user, favorites: [...user.favorites, favorite]}))
             } else {
                 setUser({...user, favorites: user.favorites.filter(item => !(item.user_id === user.id && item.nordic_center_id === nordicCenter.id))})
             }

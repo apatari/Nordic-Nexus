@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function TripForm() {
 
     const [nordicCenters, setNordicCenters] = useState(null)
-    const [errors, setErrors] = useState([])
+    // const [errors, setErrors] = useState([])
 
     const [user] = useContext(UserContext)
 
@@ -82,7 +82,11 @@ function TripForm() {
                      
                     history.push('/')    
                 } else {
-                    r.json().then(err => setErrors((currentErrors) => [err.errors]))
+                    r.json()
+                    .then(err => {
+                        // setErrors((currentErrors) => [err.errors])
+                        console.log(err)
+                    })
                 }
             })
             
@@ -144,7 +148,7 @@ function TripForm() {
                                             name="snow_cover"
                                             type='radio'
                                             id={`inline-radio-${num}`}
-                                            checked={formik.values.snow_cover == num}
+                                            checked={parseInt(formik.values.snow_cover) === num}
                                             onChange={formik.handleChange}   
                                         />
                                         )
@@ -167,7 +171,7 @@ function TripForm() {
                                             name="grooming"
                                             type='radio'
                                             id={`inline-radio-${num}`}
-                                            checked={formik.values.grooming == num}
+                                            checked={parseInt(formik.values.grooming) === num}
                                             onChange={formik.handleChange}   
                                         />
                                         )
@@ -190,7 +194,7 @@ function TripForm() {
                                             name="weather"
                                             type='radio'
                                             id={`inline-radio-${num}`}
-                                            checked={formik.values.weather == num}
+                                            checked={parseInt(formik.values.weather) === num}
                                             onChange={formik.handleChange}   
                                         />
                                         )
@@ -213,7 +217,7 @@ function TripForm() {
                                             name="fun_factor"
                                             type='radio'
                                             id={`inline-radio-${num}`}
-                                            checked={formik.values.fun_factor == num}
+                                            checked={parseInt(formik.values.fun_factor) === num}
                                             onChange={formik.handleChange}   
                                         />
                                         )

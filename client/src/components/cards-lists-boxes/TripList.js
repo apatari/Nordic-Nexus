@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import TripCardPlaceholder from "./TripCardPlaceholder";
 import { Row } from "react-bootstrap";
 import TripCard from "./TripCard";
 
