@@ -56,10 +56,10 @@ function NordicCenterInfo({ nordicCenter }) {
 
         <Row className="mb-2 fs-4" >
             <div className="my-1">
-                {nordicCenter.report_url? <a href={nordicCenter.report_url} target="_blank" >Trail Report</a>: ""}
+                {nordicCenter.report_url? <a href={nordicCenter.report_url} target="_blank" rel="noopener noreferrer" >Trail Report</a>: ""}
             </div>
             <div className="my-1 mb-3">
-                {nordicCenter.map_url? <a href={nordicCenter.map_url} target="_blank" >Trail Map</a>: ""}
+                {nordicCenter.map_url? <a href={nordicCenter.map_url} target="_blank" rel="noopener noreferrer" >Trail Map</a>: ""}
             </div>
         </Row>
         <Row className="d-flex mt-auto " >
