@@ -35,11 +35,11 @@ function NordicCenterCard({ nordicCenter }) {
                     <Row>
                         <Col sm={2} >
 
-                            {nordicCenter.report_url? <a href={nordicCenter.report_url} >Trail Report</a>: ""}
+                            {nordicCenter.report_url? <a href={nordicCenter.report_url} target="_blank" >Trail Report</a>: ""}
                         </Col>
                         <Col>
 
-                            {nordicCenter.map_url? <a href={nordicCenter.map_url} >Trail Map</a>: ""}
+                            {nordicCenter.map_url? <a href={nordicCenter.map_url} target="_blank" >Trail Map</a>: ""}
                         </Col>
                     </Row>
                 </Card.Body>
