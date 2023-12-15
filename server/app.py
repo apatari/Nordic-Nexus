@@ -39,10 +39,6 @@ api.add_resource(NordicCenterByID, '/api/nordiccenters/<int:id>')
 api.add_resource(TripIndex, '/api/trips')
 api.add_resource(FavoriteIndex, '/api/favorites')
 
-# @app.route('/')
-# @app.route('/<int:id>')
-# def index(id=0):
-#     return render_template("index.html")
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

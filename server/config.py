@@ -47,4 +47,7 @@ api = Api(app)
 CORS(app)
 
 #Routing stuff for deployment
-
+@app.route('/')
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
