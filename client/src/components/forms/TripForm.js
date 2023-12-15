@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function TripForm() {
 
     const [nordicCenters, setNordicCenters] = useState(null)
-    // const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([])
 
     const [user] = useContext(UserContext)
 
@@ -27,7 +27,7 @@ function TripForm() {
 
     const formSchema = yup.object().shape({
         comment: yup.string().max(200, "Must be fewer than 200 characters"),
-        nordic_center_id: yup.number().integer().required("Must select a Nordic center"),
+        nordic_center_id: yup.number().integer().required("Must select a Nordic center").min(1, "Must select a Nordic center"),
         snow_cover: yup 
           .number()
           .integer()
@@ -84,17 +84,12 @@ function TripForm() {
                 } else {
                     r.json()
                     .then(err => {
-                        // setErrors((currentErrors) => [err.errors])
-                        console.log(err)
+                        setErrors((currentErrors) => [err.errors])
+                        
                     })
                 }
             })
-            
-            
-            
-            
-            
-            console.log({...values, "user_id": user.id, "date": tripDate.toJSON().slice(0,10)})}
+        }
     })
 
     return (
@@ -111,17 +106,18 @@ function TripForm() {
                                 onChange={formik.handleChange} 
                                 value={formik.values.nordic_center_id}
                                 className="bg-light bg-opacity-75">
-                                <option>Nordic Center:</option>
+                                <option value={0} >Nordic Center:</option>
                                 {nordicCenters? nordicCenters.map(center =>{
                                     return <option key={center.id} value={center.id} > {center.name}</option>
                                 }): ""  }
 
                             </Form.Select>
+                            {formik.errors.nordic_center_id ? <div className="text-danger" >{formik.errors.nordic_center_id}</div> : ""}
                         </Col>
                         <Col className="ms-2"  > <strong>Date:</strong>  
                             <DatePicker className="ms-2" selected={tripDate} maxDate={today} onChange={(date) => {
                                 setTripDate(date)
-                                console.log(date.toJSON().slice(0,10))
+                                
                             }} />
                         </Col>
                     </Row>
@@ -239,9 +235,12 @@ function TripForm() {
                             />
 
                         <Form.Label>Comment (optional)</Form.Label>
-                        {/* {formik.errors.name ? <div className="text-danger" >{formik.errors.name}</div> : ""} */}
-                    </Form.Group>
+                        {formik.errors.comment ? <div className="text-danger" >{formik.errors.comment}</div> : ""}
 
+                    </Form.Group>
+                    {errors.map((err) => (
+                            <p className="text-danger m-3" key={err}>{err}</p>
+                        ))}               
                     <div className="d-flex" >
                         <Button type="submit" size='lg' className="ms-auto me-3 btn-success " >Submit</Button>
 

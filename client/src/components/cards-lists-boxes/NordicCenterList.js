@@ -7,7 +7,7 @@ import NordicCenterCardPlaceholder from "./NordicCenterCardPlaceholder";
 function NordicCenterList({ nordicCenters }) {
     if (nordicCenters) {
         return (
-            <div className="m-2" >
+            <div className="m-2 mt-4" >
                 <h3 className="m-3" >Nordic Centers</h3>
                 
                 {nordicCenters.map(nordicCenter => {
@@ -18,7 +18,7 @@ function NordicCenterList({ nordicCenters }) {
         )
     } else {
         return (
-            <div className="m-2" >
+            <div className="m-2 mt-4" >
                 <h3 className="m-3" >Nordic Centers</h3>
                 
                 <NordicCenterCardPlaceholder />
