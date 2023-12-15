@@ -48,10 +48,15 @@ function NordicCenters () {
                 />
             
             <Row>
-                <Col lg={9} >
-                    {centersToDisplay? <NordicCenterList nordicCenters={centersToDisplay} /> :
+                {nordicCenters? 
+                    <Col lg={9} >
+                        {centersToDisplay? <NordicCenterList nordicCenters={centersToDisplay} /> :
                         <NordicCenterList nordicCenters={nordicCenters} />}
-                </Col>
+                    </Col> : 
+                    <Col lg={9} >
+                        <NordicCenterList nordicCenters={false} />
+                    </Col> 
+                }
                 <Col>
                     <TripList center={"all"} />
                     <MyCard />
