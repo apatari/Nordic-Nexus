@@ -7,7 +7,7 @@ import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
 
 const lib = ['places']
 
-function SignupForm({ signupMode, setSignupMode, onLogin }) {
+function SignupForm({ signupMode, setSignupMode, onLogin, setIsLoading }) {
 
     const [errors, setErrors] = useState([])
     const history = useHistory()
@@ -42,6 +42,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
         validateOnChange: false,
         validateOnBlur: false,
         onSubmit: (values) => {
+            setIsLoading(true)
             setErrors([])
             if (formik.values.password === formik.values.confirmPassword){
             
@@ -56,6 +57,7 @@ function SignupForm({ signupMode, setSignupMode, onLogin }) {
                         r.json().then(user =>onLogin(user)) 
                         history.push('/')    
                     } else {
+                        setIsLoading(false)
                         r.json().then(err => setErrors((currentErrors) => [...currentErrors, err.errors]))
                     }
                 })

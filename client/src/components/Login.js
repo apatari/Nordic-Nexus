@@ -9,19 +9,20 @@ function Login({ onLogin }) {
     const [isLoading, setIsLoading] = useState(false)
 
 
-    if (isLoading) {
-        return <LoginLoading />
-    }
+
 
     return (
-        signupMode? 
-            <SignupForm signupMode={signupMode} setSignupMode={setSignupMode} onLogin={onLogin} /> : 
+        <div>
+            {isLoading? <LoginLoading />: ""}
+        {signupMode? 
+            <SignupForm signupMode={signupMode} setSignupMode={setSignupMode} onLogin={onLogin} setIsLoading={setIsLoading} /> : 
             <LoginForm 
                 onLogin={onLogin} 
                 setSignupMode={setSignupMode} 
                 signupMode={signupMode}
                 setIsLoading={setIsLoading} 
-            />
+            />}
+        </div>
     )
 }
 
