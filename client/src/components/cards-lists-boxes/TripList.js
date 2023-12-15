@@ -11,7 +11,7 @@ function TripList( {center} ) {
     const [trips, setTrips] = useState([])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5555/api/trips')
+        fetch('/api/trips')
         .then(res => res.json())
         .then(data => setTrips(data))
     }, [])
