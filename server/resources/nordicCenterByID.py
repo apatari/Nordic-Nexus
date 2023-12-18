@@ -39,4 +39,16 @@ class NordicCenterByID(Resource):
 
             except Exception as err:
                 return {"errors": [str(err)]}, 422
+            
+    def delete(self, id):
+
+        nordic_center = NordicCenter.query.get(id)
+
+        if nordic_center:
+            db.session.delete(nordic_center)
+            db.session.commit()
+
+            return {}, 204
+        else:
+            return {"error": "Nordic center not found"}, 404
 
