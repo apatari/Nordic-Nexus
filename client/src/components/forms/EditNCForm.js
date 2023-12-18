@@ -23,6 +23,7 @@ function EditNCForm() {
     const [errors, setErrors] = useState([])
     const [nordicCenter, setNordicCenter] = useState(initial_nc)
     const [address, setAddress] = useState("")
+    const [searchResult, setSearchResult] = useState(null)
 
     const { nordic_center_id } = useParams()
 
@@ -42,6 +43,19 @@ function EditNCForm() {
     }, [])
 
     const addressRef = useRef(nordicCenter? nordicCenter.address : "")
+
+    const handlePlaceChange = () => {
+        if (searchResult) {
+            const place = searchResult.getPlace()
+            setAddress(place.formatted_address)
+        }
+        
+    }
+
+    function onLoad(autocomplete) {
+        console.log(autocomplete)
+        setSearchResult(autocomplete);
+      }
 
     const {isLoaded} = useJsApiLoader({
         libraries: lib,
@@ -69,7 +83,7 @@ function EditNCForm() {
         validateOnBlur: false,
         enableReinitialize: true,
         onSubmit: (values) => {
-            // console.log({...values, "address": address})
+            console.log({...values, "address": address})
 
             fetch(`/api/nordiccenters/${nordicCenter.id}`, {
                 method: "PATCH",
@@ -113,7 +127,9 @@ function EditNCForm() {
                         <Form.Label>Name</Form.Label>
                         {formik.errors.name ? <div className="text-danger" >{formik.errors.name}</div> : ""}
                     </Form.Group>
-                    <Autocomplete>
+                    <Autocomplete
+                    onLoad={onLoad}
+                    onPlaceChanged={handlePlaceChange} >
                     <Form.Group className="form-floating mt-3 mx-3"  >
                         <Form.Control 
                             type="text" 
