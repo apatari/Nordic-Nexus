@@ -45,14 +45,14 @@ if __name__ == '__main__':
 
         nc1 = NordicCenter(
             name="Wild Wings", 
-            address="Peru, VT", 
+            address="246 Styles Lane, Peru, VT", 
             latitude=43.26272, 
             longitude=-72.90498, 
             report_url='https://wildwingsski.com/category/trail-conditions/',
             map_url='https://wildwingsski.com/wp-content/uploads/sites/23/2023/01/TrailMap-ToPrint.gif')
         nc2 = NordicCenter(
             name="BOC Trails", 
-            address="58 Senator Gannett Dr, Brattleboro, VT 05301", 
+            address="Senator Gannett Dr, Brattleboro, VT 05301", 
             latitude=42.87315, 
             longitude=-72.58144)
         nc3 = NordicCenter(
