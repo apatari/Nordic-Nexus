@@ -199,12 +199,13 @@ function EditNCForm() {
                     </div>
 
                     <div className="d-flex" >
-                        <Button type="submit" size='lg' className="ms-auto me-3 btn-success " >Submit</Button>
+                        <Button type="submit" size='lg' className="ms-auto me-3 btn-success " >Submit Edits</Button>
 
                     </div>
                     
                 </Form>
             </Col>
+                <div><Button size="lg" className="ms-5 mb-4 btn-danger" >Delete Nordic Center</Button></div>
             
         </div>
     )
