@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as yup from "yup"
@@ -42,7 +42,6 @@ function EditNCForm() {
             
     }, [])
 
-    const addressRef = useRef(nordicCenter? nordicCenter.address : "")
 
     const handlePlaceChange = () => {
         if (searchResult) {
@@ -53,7 +52,7 @@ function EditNCForm() {
     }
 
     function onLoad(autocomplete) {
-        console.log(autocomplete)
+        
         setSearchResult(autocomplete);
       }
 
@@ -83,7 +82,7 @@ function EditNCForm() {
         validateOnBlur: false,
         enableReinitialize: true,
         onSubmit: (values) => {
-            console.log({...values, "address": address})
+            
 
             fetch(`/api/nordiccenters/${nordicCenter.id}`, {
                 method: "PATCH",
