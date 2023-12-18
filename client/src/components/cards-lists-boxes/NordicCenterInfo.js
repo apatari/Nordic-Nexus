@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { Row, Col, Button, Placeholder, Card } from "react-bootstrap";
 import { UserContext } from "../App";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function NordicCenterInfo({ nordicCenter }) {
 
     const [user, setUser] = useContext(UserContext)
+
+    const history = useHistory()
 
     const handleFavClick = () => {
         fetch('/api/favorites', {
@@ -69,7 +72,7 @@ function NordicCenterInfo({ nordicCenter }) {
                     <Button onClick={handleFavClick} >Add to Favorites</Button>  }  
             </Col>
             <Col>
-                <Button>Edit Info</Button>
+                <Button onClick={() => history.push(`/nordiccenters/${nordicCenter.id}/edit`)} >Edit Info</Button>
             </Col>
         </Row>
     </div>

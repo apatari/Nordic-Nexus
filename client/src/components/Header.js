@@ -26,13 +26,13 @@ function Header() {
                 <Nav className="me-auto fs-5 ">
                     <Nav.Link 
                         exact to="/" 
-                        className="px-4" 
+                        className="px-3" 
                         as={NavLink} 
                     >Home</Nav.Link>
 
                     <Nav.Link 
                         exact to="/nordiccenters" 
-                        className="px-4" 
+                        className="px-3" 
                         as={NavLink} 
                     >Nordic Centers</Nav.Link>
 

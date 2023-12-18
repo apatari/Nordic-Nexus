@@ -9,6 +9,7 @@ import NordicCenters from "./NordicCenters";
 import TripForm from "./forms/TripForm";
 import NordicCenterForm from "./forms/NordicCenterForm";
 import NordicCenterDetail from "./NordicCenterDetail";
+import EditNCForm from "./forms/EditNCForm";
 
 export const UserContext = createContext(null)
 
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route exact path="/nordiccenters/:nordic_center_id" >
           <NordicCenterDetail />
+        </Route>
+        <Route exact path="/nordiccenters/:nordic_center_id/edit" >
+          <EditNCForm />
         </Route>
       </Switch>
     </UserContext.Provider>
