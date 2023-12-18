@@ -19,7 +19,7 @@ function DeleteButton({ nordicCenter }) {
         .then(r => {
             if (r.ok) {
                 
-                history.push('/')
+                history.push('/nordiccenters')
             } else {
                 alert("Error: delete unsuccessful")
                 handleClose()
