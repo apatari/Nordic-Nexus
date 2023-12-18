@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as yup from "yup"
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import DeleteButton from "./DeleteButton";
 
 const lib = ['places']
 
@@ -220,7 +221,7 @@ function EditNCForm() {
                     
                 </Form>
             </Col>
-                <div><Button size="lg" className="ms-5 mb-4 btn-danger" >Delete Nordic Center</Button></div>
+                <div> <DeleteButton nordicCenter={nordicCenter} /> </div>
             
         </div>
     )

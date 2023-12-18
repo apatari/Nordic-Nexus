@@ -23,7 +23,7 @@ class NordicCenter(db.Model, SerializerMixin):
     report_url = db.Column(db.String)
     map_url = db.Column(db.String)
 
-    trips = db.relationship('Trip', back_populates='nordic_center')
+    trips = db.relationship('Trip', back_populates='nordic_center', cascade='all')
     trip_users = association_proxy('trips', 'user',
                                      creator = lambda user_obj: Trip(user=user_obj))
     
