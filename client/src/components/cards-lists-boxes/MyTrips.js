@@ -18,7 +18,7 @@ function MyTrips( ) {
         fetch('/api/trips')
         .then(res => res.json())
         .then(data => setTrips(data.filter(item => item.user.id === user.id)))
-    }, [])
+    }, [user.id])
 
 
     if (!trips) {

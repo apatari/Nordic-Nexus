@@ -23,12 +23,6 @@ function Home() {
     const centersToDisplay = nordicCenters.filter(center => {
         return center.favorites.some(favorite => favorite.user_id === user.id)})
 
-        {(centersToDisplay.length > 0)?
-            <NordicCenterList nordicCenters={false} mode={"home"} /> :
-            <div className="m-3 text-warning">
-                <h4>Select your favorite Nordic centers to see them here </h4>
-            </div>
-            }
 
     return (
         <div className="" >

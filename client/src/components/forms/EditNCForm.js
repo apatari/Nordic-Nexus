@@ -42,7 +42,7 @@ function EditNCForm() {
         
         })
             
-    }, [])
+    }, [nordic_center_id])
 
 
     const handlePlaceChange = () => {
