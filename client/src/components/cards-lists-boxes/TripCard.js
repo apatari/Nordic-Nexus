@@ -2,9 +2,9 @@ import React from "react";
 import { Card, ProgressBar } from "react-bootstrap";
 import { Link } from 'react-router-dom'
 
-function TripCard({ trip }) {
+function TripCard({ trip, background }) {
     return (
-        <Card style={{width: '16rem'}}  className=" mx-2 my-3" >
+        <Card style={{width: '16rem'}}  className={ `${background} mx-2 my-3`} >
             <Card.Body>
         
                 
@@ -16,7 +16,7 @@ function TripCard({ trip }) {
                     {trip.nordic_center.name}
                     </Card.Title>
                 
-                <Card.Text><strong> {trip.user.username}</strong>, {trip.date} </Card.Text>
+                <Card.Text>{(background === "")?<strong> {trip.user.username},</strong>: ""} {trip.date} </Card.Text>
                 
                 <Card.Text> <em> {trip.comment}</em></Card.Text>
                     <ProgressBar className="" >
