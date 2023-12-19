@@ -12,7 +12,7 @@ function Home() {
 
     const [user] = useContext(UserContext)
 
-    const [nordicCenters, setNordicCenters] = useState([])
+    const [nordicCenters, setNordicCenters] = useState(null)
 
     useEffect(() => {
         fetch('/api/nordiccenters')
