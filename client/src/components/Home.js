@@ -19,7 +19,7 @@ function Home() {
         .then(res => res.json())
         .then(data => setNordicCenters(data.filter(center => {
             return center.favorites.some(favorite => favorite.user_id === user.id)})))
-    }, [])
+    }, [user.id])
 
 
 
