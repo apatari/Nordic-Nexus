@@ -17,11 +17,10 @@ function Home() {
     useEffect(() => {
         fetch('/api/nordiccenters')
         .then(res => res.json())
-        .then(data => setNordicCenters(data))
+        .then(data => setNordicCenters(data.filter(center => {
+            return center.favorites.some(favorite => favorite.user_id === user.id)})))
     }, [])
 
-    const centersToDisplay = nordicCenters.filter(center => {
-        return center.favorites.some(favorite => favorite.user_id === user.id)})
 
 
     return (
@@ -32,8 +31,8 @@ function Home() {
                 
                 {nordicCenters ? 
                     
-                        ((centersToDisplay.length > 0)?
-                            <div ><NordicCenterList nordicCenters={centersToDisplay} mode={"home"} /> </div>:
+                        ((nordicCenters.length > 0)?
+                            <div ><NordicCenterList nordicCenters={nordicCenters} mode={"home"} /> </div>:
                            
                             <Row className="m-4 text-white" >
                                 <Card className=" m-3 bg-info text-white w-75" >
