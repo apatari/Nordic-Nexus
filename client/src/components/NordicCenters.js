@@ -50,7 +50,7 @@ function NordicCenters () {
             <Row>
                 {nordicCenters? 
                     <Col lg={9} >
-                         <NordicCenterList nordicCenters={centersToDisplay} /> 
+                         <NordicCenterList nordicCenters={centersToDisplay} mode={"centers"} /> 
                     </Col> : 
                     <Col lg={9} >
                         <NordicCenterList nordicCenters={false} />

@@ -78,7 +78,7 @@ if __name__ == '__main__':
         trips = [
             Trip(user_id=user1.id, nordic_center_id=nc1.id, snow_cover=3, grooming=2, weather=4, fun_factor=5, date=datetime.date(2022,2,1)),
             Trip(user_id=user1.id, nordic_center_id=nc2.id, snow_cover=2, grooming=4, weather=2, fun_factor=2, date=datetime.date(2022,2,2)),
-            Trip(user_id=user2.id, nordic_center_id=nc3.id, snow_cover=4, grooming=5, weather=3, fun_factor=5, date=datetime.date(2022,2,3),
+            Trip(user_id=user2.id, nordic_center_id=nc3.id, snow_cover=4, grooming=4, weather=3, fun_factor=5, date=datetime.date(2022,2,3),
                  comment="There's always snow up on Prospect!"),
             Trip(user_id=user2.id, nordic_center_id=nc2.id, snow_cover=5, grooming=2, weather=5, fun_factor=3, date=datetime.date(2022,2,4),
                  comment="The volunteers at the BOC really keep it in great shape."),

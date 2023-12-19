@@ -5,6 +5,7 @@ import * as yup from "yup"
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api'
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import DeleteButton from "./DeleteButton";
+import LoginLoading from "../cards-lists-boxes/LoginLoading";
 
 const lib = ['places']
 
@@ -103,7 +104,7 @@ function EditNCForm() {
     })
 
     if (!isLoaded) {
-        return <h2 className='m-3' >loading</h2>
+        return <LoginLoading />
       }
 
     return (
