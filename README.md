@@ -1,4 +1,4 @@
-# Nordic Nexus - All your Nordic skiingiInfo in one place
+# Nordic Nexus - All your Nordic skiing Info in one place
 
 Comparing weather, trail conditions, and updates across several Nordic centers can be difficult.  Nordic Nexus is here to provide a way to keep up to date with the latest info and plan your next cross country skiing adventure.  Create or discover profiles for your favorite Nordic ski destinations.  Link trail reports and maps and connect to the latest weather reports for each area.  Log your trips to let others know how that tracks look today.  There's even a map feature to plan your next trip's driving route!
 
@@ -39,7 +39,7 @@ From there, open a new terminal in the main directory and run:
 ```bash
 npm install --prefix client
 ```
-You should see a working version of Squawk Rack running on your machine!
+You should see a working version of Nordic Nexus running on your machine!
 
 ## Usage
 
