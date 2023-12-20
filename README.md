@@ -43,7 +43,7 @@ You should see a working version of Squawk Rack running on your machine!
 
 ## Usage
 
-![NordicNexus](TODO: add link)
+![NordicNexus](https://github.com/apatari/Nordic-Nexus/blob/main/NordicNexusGIF.gif)
 
 Start by creating a username and password.  From there you can browse the Nordic centers or make new profiles for any that aren't already in the database.  Selecting an individual center brings up more information, including the weather forecast, trail report and map links, and recent trips.  You can fill out the "New Trip" form to log a recent outing and provide helpful information for anyone else considering a trip to that same ski area.  Adding a Nordic center to your favorites will ensure that it appears on your home screen for easy monitoring.
 
