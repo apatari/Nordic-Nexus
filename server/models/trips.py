@@ -17,6 +17,7 @@ class Trip(db.Model, SerializerMixin):
     fun_factor = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
     date = db.Column(db.Date, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
 
     user = db.relationship('User', back_populates='trips')

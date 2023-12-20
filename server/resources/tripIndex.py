@@ -9,6 +9,7 @@ class TripIndex(Resource):
 
     def get(self):
         trips = [trip.to_dict() for trip in Trip.query.order_by(Trip.date.desc()).all()]
+        trips.sort(key=lambda item: (item['date'], item['created_at']), reverse=True)
 
         return trips, 200
     
