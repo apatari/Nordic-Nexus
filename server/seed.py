@@ -63,7 +63,7 @@ if __name__ == '__main__':
             report_url='https://prospectmountain.com/conditions/')
         nc4 = NordicCenter(
             name="Jackson XC", 
-            address="153 Main Street, Jackson, NH", 
+            address="Jackson, NH", 
             latitude=44.14664, 
             longitude=-71.18442, 
             report_url='https://www.jacksonxc.org/trail-report/',
