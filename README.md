@@ -4,7 +4,7 @@ Comparing weather, trail conditions, and updates across several Nordic centers c
 
 ## Setup
 
-This repo is currently deployed [at this address](https://nordic-nexus.onrender.com/) using Render.  You are welcome to fork, clone, and modify it for any purpose.  In order to run it on your own local machine, you'll need to cd to the project directory and run a few commands in the terminal:
+This repo was once deployed [at this address](https://nordic-nexus.onrender.com/) using Render.  You are welcome to fork, clone, and modify it for any purpose.  In order to run it on your own local machine, you'll need to cd to the project directory and run a few commands in the terminal:
 ```bash
 pipenv install
 ```
