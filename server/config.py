@@ -51,3 +51,5 @@ CORS(app)
 @app.route('/<int:id>')
 def index(id=0):
     return render_template("index.html")
+
+#test code
